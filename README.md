@@ -1,2 +1,2 @@
 # DailyTinyImprovement
-日拱一卒
+日拱一卒.
