@@ -5,6 +5,7 @@
 # 配套书籍：http://nlp.hankcs.com/book.php
 # 讨论答疑：https://bbs.hankcs.com/
 from pyhanlp import *
+
 from .test_utility import ensure_data
 
 HLM_PATH = ensure_data("红楼梦.txt", "http://file.hankcs.com/corpus/红楼梦.zip")
