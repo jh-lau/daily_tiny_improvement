@@ -3,7 +3,6 @@
   @Date         : 2019/12/28 下午4:28
   @Project      : DailyTinyImprovement
   @FileName     : regex_date.py
-  @Description  : Placeholder
 """
 
 import re
