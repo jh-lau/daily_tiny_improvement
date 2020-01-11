@@ -9,8 +9,6 @@ import distance
 origin_title = ''
 segment_result = ''
 
-from pyhanlp import HanLP
-
 for i, cut_word in enumerate(segment_result):
     if distance.levenshtein(cut_word.word, origin_title) == 1 and len(cut_word.word) == len(origin_title):
         content_string = content_string.replace(cut_word.word, origin_title)
