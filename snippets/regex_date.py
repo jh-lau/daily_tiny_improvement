@@ -15,7 +15,6 @@ test_str = "19023年13月32日,1938年12月9日,1938年12月19日,1938年2月9�
 
 date = [s.groupdict() for s in pattern.finditer(test_str) if s.start() != s.end()]
 
-
 result = []
 for d in date:
     pre_year = d['pre_year'] if d['pre_year'] and int(d['pre_year']) in range(1000, 3000) else ''
