@@ -15,6 +15,6 @@ def fac(n=1):
         n += 1
 
 
-f = fac()
-
-next(f)
+if __name__ == '__main__':
+    f = fac()
+    next(f)
