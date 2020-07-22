@@ -1,0 +1,21 @@
+output_dir: output
+target_word:
+  - 秘密
+  - 机密
+  - 绝密
+target_file_type:
+  - md
+  - txt
+  - doc
+  - docx
+  - xls
+  - xlsx
+  - pdf
+  - jpg
+  - png
+  - bmp
+  - jpeg
+  - tmp
+  - log
+target_root_dir: /
+buffer_size: 512
