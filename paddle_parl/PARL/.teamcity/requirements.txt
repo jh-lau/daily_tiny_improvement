@@ -1,0 +1,5 @@
+# requirements for unittest
+paddlepaddle-gpu==1.6.1.post97
+gym
+details
+parameterized
