@@ -26,6 +26,7 @@ import pytesseract
 from docx import Document
 import configparser
 from collections import defaultdict
+
 logging.propagate = False
 logging.getLogger().setLevel(logging.ERROR)
 
@@ -141,7 +142,8 @@ def pdf_checker(file_path):
 
 
 def pics_checker(file_path):
-    if search_keyword(''.join(''.join(pytesseract.image_to_string(Image.open(file_path), lang='chi_sim').split()).strip())):
+    if search_keyword(
+            ''.join(''.join(pytesseract.image_to_string(Image.open(file_path), lang='chi_sim').split()).strip())):
         return file_path
 
 
@@ -204,8 +206,9 @@ if __name__ == '__main__':
     path_list = gen_path('/')
     start = time.time()
     counter = 0
-    total_files_dic = {s:set() for s in target_file_ext}
+    total_files_dic = {s: set() for s in target_file_ext}
     print(f'开始从 {target_root_dir} 检测：目标文件类型为{target_file_ext}')
+
     with futures.ProcessPoolExecutor() as pool:
         for number, target_file_dic in pool.map(file_counter, path_list):
             counter += number
@@ -216,24 +219,27 @@ if __name__ == '__main__':
         print(f'共有 {key} 文件： {len(value)} 个。')
 
     start = time.time()
-    file_gen = gen_file(total_files)
     hit_file = set()
     count = 0
-    with futures.ProcessPoolExecutor() as pool:
-        results = pool.map(file_checker, file_gen)
-        print()
+    # file_gen = gen_file(total_files)
+    for key, value in total_files_dic.items():
+        print(f'开始处理 {key} 类型文件...')
+        file_gen = gen_file(value)
         inside_timer = time.time()
-        for result in results:
-            if result:
-                hit_file.add(result)
-            count += 1
-            elapse_time = (time.time() - inside_timer) / 60
-            print(f'\r处理第 {count} 个文件，累计耗时： {elapse_time:<6.1f} 分钟', end='')
-    print(f'\n处理文件耗时 : {(time.time() - start) / 60:.1f}分钟。', end='')
+        with futures.ProcessPoolExecutor() as pool:
+            results = pool.map(file_checker, file_gen)
+            print()
+            for result in results:
+                if result:
+                    hit_file.add(result)
+                count += 1
+                elapse_time = (time.time() - inside_timer) / 60
+                print(f'\r处理第 {count} 个文件，累计耗时： {elapse_time:<6.1f} 分钟', end='')
+    print(f'\n处理所有文件耗时 : {(time.time() - start) / 60:.1f}分钟。', end='')
 
     if hit_file:
         with futures.ProcessPoolExecutor() as pool:
             pool.map(copy_file, hit_file)
-        print(f'检测到涉密文件 {len(hit_file)} 个，已复制到当前 {output_dir} 文件夹。')
+        print(f'检测到涉密文件 {len(hit_file)} 个，已复制到当前 {output_dir} 输出文件夹。')
     else:
         print(f'通过检测，未发现包含敏感信息文件。')
