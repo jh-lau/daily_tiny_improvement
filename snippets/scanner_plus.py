@@ -50,48 +50,55 @@ except KeyError as e:
     print(f'配置文件信息 {e} 未找到，请检查。')
 rsrcmgr = PDFResourceManager()
 
+file_type_map = {
+    'txt': ('.tmp', '.log', '.txt', '.md'),
+    'excel': ('.xls', '.xlsx'),
+    'pdf': ('.pdf',),
+    'doc': ('.doc',),
+    'docx': ('.docx',),
+    'pics': ('.jpg', '.png', '.bmp', '.jpeg')
+}
+
 
 def file_counter(file_path: str):
-    counter = 0
+    inner_counter = 0
     # target_file = []
     file_dic = defaultdict(set)
     for root, _, files in os.walk(file_path):
         for file in files:
-            if file.endswith(('txt', 'md', 'log', 'tmp')):
+            file = os.path.join(root, file)
+            if file.endswith(file_type_map['txt']):
                 file_dic['txt'].add(file)
-            elif file.endswith(('xlsx', 'xls')):
+            elif file.endswith(file_type_map['excel']):
                 file_dic['excel'].add(file)
-            elif file.endswith('pdf'):
+            elif file.endswith(file_type_map['pdf']):
                 file_dic['pdf'].add(file)
-            elif file.endswith(('jpg', 'png', 'bmp', 'jpeg')):
+            elif file.endswith(file_type_map['pics']):
                 file_dic['pics'].add(file)
-            elif file.endswith('doc'):
+            elif file.endswith(file_type_map['doc']):
                 file_dic['doc'].add(file)
-            elif file.endswith('docx'):
+            elif file.endswith(file_type_map['docx']):
                 file_dic['docx'].add(file)
-        counter += sum(map(len, file_dic.values()))
-        # match = [os.path.join(root, file) for file in files if file.endswith(target_file_ext)]
-        # target_file.extend(match)
-        # counter += len(match)
+    inner_counter += sum(map(len, file_dic.values()))
 
-    # return counter, target_file
-    return counter, file_dic
+    # return inner_counter, target_file
+    return inner_counter, file_dic
 
 
 def file_checker(file_path: str):
     try:
         result = ''
-        if file_path.endswith(('txt', 'md', 'log', 'tmp')):
+        if file_path.endswith(file_type_map['txt']):
             result = txt_checker(file_path)
-        elif file_path.endswith(('xlsx', 'xls')):
+        elif file_path.endswith(file_type_map['excel']):
             result = excel_checker(file_path)
-        elif file_path.endswith('pdf'):
+        elif file_path.endswith(file_type_map['pdf']):
             result = pdf_checker(file_path)
-        elif file_path.endswith(('jpg', 'png', 'bmp', 'jpeg')):
+        elif file_path.endswith(file_type_map['pics']):
             result = pics_checker(file_path)
-        elif file_path.endswith('doc'):
+        elif file_path.endswith(file_type_map['doc']):
             result = doc_checker(file_path)
-        elif file_path.endswith('docx'):
+        elif file_path.endswith(file_type_map['docx']):
             result = docx_checker(file_path)
 
         return result
@@ -206,7 +213,8 @@ if __name__ == '__main__':
     path_list = gen_path('/')
     start = time.time()
     counter = 0
-    total_files_dic = {s: set() for s in target_file_ext}
+    file_type_list = ['txt', 'pdf', 'excel', 'doc', 'docx', 'pics']
+    total_files_dic = {s: set() for s in file_type_list}
     print(f'开始从 {target_root_dir} 检测：目标文件类型为{target_file_ext}')
 
     with futures.ProcessPoolExecutor() as pool:
@@ -220,10 +228,9 @@ if __name__ == '__main__':
 
     start = time.time()
     hit_file = set()
-    count = 0
-    # file_gen = gen_file(total_files)
     for key, value in total_files_dic.items():
-        print(f'开始处理 {key} 类型文件...')
+        count = 0
+        print(f'\n开始处理 {key} 类型文件...')
         file_gen = gen_file(value)
         inside_timer = time.time()
         with futures.ProcessPoolExecutor() as pool:
