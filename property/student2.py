@@ -5,6 +5,7 @@
   @FileName     : student2.py
   @Description  : 避免重复(如student)的属性方法
 """
+from functools import partial
 
 
 def type_property(name, expected_type):
@@ -24,8 +25,12 @@ def type_property(name, expected_type):
 
 
 class Student:
-    name = type_property('name', str)
-    age = type_property('age', int)
+    # name = type_property('name', str)
+    # age = type_property('age', int)
+    Integer = partial(type_property, expected_type=int)
+    String = partial(type_property, expected_type=str)
+    name = String('name')
+    age = Integer('age')
 
     def __init__(self, name, age):
         self.name = name
@@ -34,3 +39,6 @@ class Student:
 
 if __name__ == '__main__':
     st = Student('joey', 20)
+    st.name = 13
+    print(st.name)
+    print(st.age)
