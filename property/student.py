@@ -3,7 +3,7 @@
   @Date         : 2020/7/30 上午9:28
   @Project      : DailyTinyImprovement
   @FileName     : student.py
-  @Description  : Placeholder
+  @Description  : 避免写这种过于臃肿的代码
 """
 
 
