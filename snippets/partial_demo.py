@@ -3,7 +3,7 @@
   @Date         : 2020/7/30 下午2:41
   @Project      : DailyTinyImprovement
   @FileName     : partial_demo.py
-  @Description  : Placeholder
+  @Description  : 偏函数
 """
 from functools import partial
 

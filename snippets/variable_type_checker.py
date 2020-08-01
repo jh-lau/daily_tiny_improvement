@@ -3,7 +3,7 @@
   @Date         : 2019/12/28 下午2:46
   @Project      : DailyTinyImprovement
   @FileName     : variable_type_checker.py
-  @Description  : Placeholder
+  @Description  : 强制参数校验
 """
 from functools import wraps
 from inspect import signature
