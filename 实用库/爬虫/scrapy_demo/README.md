@@ -7,7 +7,7 @@
 - 创建scrapy项目
     - scrapy startproject `myspider`
 - 生成爬虫
-    - scrapy genspider itcast "itcast.cn"
+    - scrapy genspider `itcast` `itcast.cn`
 - 提取数据
     - scrapy crawl `itcast`
     - 完善spider，使用xpath等方法
