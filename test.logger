@@ -1,0 +1,4 @@
+2020-08-02 12:33:56,278 INFO [test.py:13] :  this is test log1
+2020-08-02 12:33:56,278 INFO [test.py:14] :  this is test log2
+2020-08-02 12:33:56,278 INFO [test.py:15] :  this is test log3
+2020-08-02 12:33:56,278 WARNING [test.py:16] :  this is test log4

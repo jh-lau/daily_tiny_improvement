@@ -12,9 +12,12 @@ BOT_NAME = 'myspider'
 SPIDER_MODULES = ['myspider.spiders']
 NEWSPIDER_MODULE = 'myspider.spiders'
 
+# log settings
 LOG_LEVEL = 'WARNING'
+# LOG_FILE = './spiderlog.log'
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'myspider (+http://www.yourdomain.com)'
+USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
