@@ -15,4 +15,5 @@ class ItcastSpider(scrapy.Spider):
             item = {'name': li.xpath(".//h3/text()").extract_first().strip(),
                     'title': li.xpath(".//h4/text()").extract_first().strip(),
                     'index': index}
+            self.logger.warning('this is warning: hello world')
             yield item

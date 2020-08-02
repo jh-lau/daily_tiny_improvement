@@ -5,16 +5,11 @@
 
 
 # useful for handling different item types with a single interface
-import logging
-
-logger = logging.getLogger(__name__)
 
 
 class MyspiderPipeline:
     def process_item(self, item, spider):
         # print(item)
-        item['hello'] = 'world'
-        logger.warning('==' * 10)
         return item
 
 
