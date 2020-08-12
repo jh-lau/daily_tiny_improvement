@@ -15,5 +15,6 @@ if __name__ == '__main__':
     # print(s)
     # s.sort(key=lambda x: x[2])
     # print(s)
-    r.sort(key=lambda x: (list(x[1].values())[0], x[2]))
+    # 按照第二个元素倒序，按照第三个元素升序排列
+    r.sort(key=lambda x: (-list(x[1].values())[0], x[2]))
     print(r)
