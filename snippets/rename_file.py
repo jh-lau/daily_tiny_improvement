@@ -10,7 +10,6 @@ import os
 
 if __name__ == '__main__':
     dst_path = os.path.abspath('02-算法思想')
-
     for d in os.listdir(dst_path):
         src = os.path.realpath(os.path.join(dst_path, d))
         temp = d.split('-')[1]
