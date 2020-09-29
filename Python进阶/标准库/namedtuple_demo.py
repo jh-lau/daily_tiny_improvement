@@ -11,8 +11,9 @@ from pprint import pprint as print
 grade = namedtuple('student', ('score', 'weight'))
 
 if __name__ == '__main__':
-   g1 = grade([100, 12, 123, 123], .23)
-   g2 = grade(80, .34)
-   print(g1.score)
-   print(g1.weight)
-   print(g1.score.count(123))
+    g1 = grade([100, 12, 123, 123], .23)
+    g2 = grade(80, .34)
+    print(g1.score)
+    print(g1.weight)
+    print(g1.score.count(123))
+    print(g2.count(.34))
