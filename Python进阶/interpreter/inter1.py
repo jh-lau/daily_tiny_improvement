@@ -5,13 +5,24 @@
   @FileName     : inter1.py
   @Description  : Placeholder
 """
+from typing import Tuple, Dict, List
 
 
 class Interpreter:
     def __init__(self):
         self.stack = []
+        self.env = {}
 
-    def LOAD_VALUE(self, number):
+    def STORE_NAME(self, name):
+        if self.stack:
+            self.env[name] = self.stack.pop()
+
+    def LOAD_NAME(self, name):
+        value = self.env.get(name, '')
+        if value:
+            self.stack.append(value)
+
+    def LOAD_VALUE(self, number: int):
         self.stack.append(number)
 
     def ADD_TWO_VALUES(self):
@@ -23,18 +34,26 @@ class Interpreter:
         answer = self.stack.pop()
         print(answer)
 
+    def parse_args(self, instruction, argument, what_to_execute):
+        arg = []
+        numbers = ['LOAD_VALUE']
+        names = ['LOAD_NAME', 'STORE_NAME']
+        if instruction in numbers:
+            arg = what_to_execute['numbers'][argument]
+        if instruction in names:
+            arg = what_to_execute['names'][argument]
+
+        return arg
+
     def run_code(self, what_to_execute):
         instructions = what_to_execute.get('instructions', [])
-        numbers = what_to_execute.get('numbers', [])
-        for step in instructions:
-            instruction, argument = step
-            if instruction == 'LOAD_VALUE':
-                value = numbers[argument]
-                self.LOAD_VALUE(value)
-            if instruction == 'ADD_TWO_VALUES':
-                self.ADD_TWO_VALUES()
-            if instruction == 'PRINT_ANSWER':
-                self.PRINT_ANSWER()
+        for instruction, argument in instructions:
+            args = self.parse_args(instruction, argument, what_to_execute)
+            method = getattr(self, instruction)
+            if argument is None:
+                method()
+            else:
+                method(args)
 
 
 if __name__ == '__main__':
@@ -46,6 +65,18 @@ if __name__ == '__main__':
                          ("ADD_TWO_VALUES", None),
                          ("PRINT_ANSWER", None)],
         "numbers": [7, 5, 4]}
+    what_to_execute2 = {
+        "instructions": [("LOAD_VALUE", 0),
+                         ("STORE_NAME", 0),
+                         ("LOAD_VALUE", 1),
+                         ("STORE_NAME", 1),
+                         ("LOAD_NAME", 0),
+                         ("LOAD_NAME", 1),
+                         ("ADD_TWO_VALUES", None),
+                         ("PRINT_ANSWER", None)],
+        "numbers": [1, 2],
+        "names": ["a", "b"]}
 
     interpreter = Interpreter()
     interpreter.run_code(what_to_execute)
+    interpreter.run_code(what_to_execute2)
