@@ -62,6 +62,7 @@ if __name__ == '__main__':
     init_queue()
     time1 = time.time()
     # todo 2 注意todo1与todo2的传参区别：多进程各自有一个队列，因此需要单独传入q
+    # 可以通过任务管理器观察：多进程时会出现多个解释器运行
     process_list = [multiprocessing.Process(target=task_io, args=(i, q)) for i in range(8)]
     for p in process_list:
         p.start()
