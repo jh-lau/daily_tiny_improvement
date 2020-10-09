@@ -2,7 +2,7 @@
   @Author       : liujianhan
   @Date         : 2020/7/29 下午2:05
   @Project      : DailyTinyImprovement
-  @FileName     : empty_list.py
+  @FileName     : 空列表陷阱.py
   @Description  : Placeholder
 """
 

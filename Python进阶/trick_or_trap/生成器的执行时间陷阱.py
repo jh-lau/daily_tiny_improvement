@@ -2,7 +2,7 @@
   @Author       : liujianhan
   @Date         : 2020/7/29 下午2:03
   @Project      : DailyTinyImprovement
-  @FileName     : evaluation_time_discrepancy.py
+  @FileName     : 生成器的执行时间陷阱.py
   @Description  : 在生成器表达式中, in 子句在声明时执行, 而条件子句则是在运行时执行.
 所以在运行前, array 已经被重新赋值为 [2, 8, 22], 因此对于之前的 1, 8 和 15, 只有 count(8) 的结果是大于 0 的, 所以生成器只会生成 8.
 第二部分中 g1 和 g2 的输出差异则是由于变量 array_1 和 array_2 被重新赋值的方式导致的.
