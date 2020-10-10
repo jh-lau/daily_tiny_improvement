@@ -3,9 +3,12 @@
   @Date         : 20/8/11 21:29
   @FileName     : decorator_demo.py
   @ProjectName  : DailyTinyImprovement
-  @Description  : Placeholder
+  @Description  : 装饰器的特性：
+  1.将被装饰函数变成另一个函数
+  2.在被装饰的函数定义之后立即运行
  """
 from functools import wraps
+from functools import singledispatch
 
 
 def trace(func):

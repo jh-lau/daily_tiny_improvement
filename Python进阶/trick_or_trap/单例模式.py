@@ -3,7 +3,7 @@
   @Date         : 2020/10/9 12:45
   @Project      : DailyTinyImprovement
   @FileName     : 单例模式.py
-  @Description  : Placeholder
+  @Description  : 使用锁保证多线程中的单例机制正常工作
 """
 import time
 import threading

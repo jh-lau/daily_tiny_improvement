@@ -21,7 +21,7 @@
 ## 实用代码块
 - [多进程文件关键词搜索](snippets/关键字检索)
 - [正则表达式](snippets/正则表达式)
-- [语法树](snippets/grammar_tree.py)
+- [语法树](snippets/语法树.py)
 - [合并重复项](snippets/merge_duplicated_items.py)
 - [维特比](snippets/viterbi.py)
 
