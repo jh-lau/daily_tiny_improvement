@@ -8,6 +8,7 @@
 from functools import partial
 
 
+# 方法1
 def type_property(name, expected_type):
     storage_name = '_' + name
 
@@ -37,6 +38,7 @@ class Student:
         self.age = age
 
 
+# 方法2
 class Score:
     def __init__(self, subject):
         self.name = subject
