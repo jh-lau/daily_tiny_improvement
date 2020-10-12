@@ -6,7 +6,7 @@
 - [装饰器](Python进阶/装饰器)
 - [属性修饰符](Python进阶/属性修饰符)
 - [元编程](Python进阶/元编程)
-- [异步与并发](Python进阶/异步并行与并发)
+- [异步与并发](Python进阶/并发并行与协程)
 - [socket编程](Python进阶/socket编程)
 - [标准库](Python进阶/标准库)
     - zip

@@ -44,12 +44,31 @@ def make_averager():
     return averager
 
 
+# 协程版
+def make_averager_co():
+    total = 0.
+    count = 0
+    result = None
+    while True:
+        term = yield result
+        total += term
+        count += 1
+        result = total / count
+
+
 if __name__ == '__main__':
-    avg = make_averager()
-    avg2 = make_average_no_nonlocal()
-    print(avg(10))
-    print(avg(11))
-    print(avg(12))
-    print(avg2(10))
-    print(avg2(11))
-    print(avg2(12))
+    # avg = make_averager()
+    # avg2 = make_average_no_nonlocal()
+    # print(avg(10))
+    # print(avg(11))
+    # print(avg(12))
+    # print(avg2(10))
+    # print(avg2(11))
+    # print(avg2(12))
+    co_avg = make_averager_co()
+    co_avg.send(None)
+    print(co_avg.send(10))
+    print(co_avg.send(11))
+    print(co_avg.send(12))
+    co_avg.close()
+    print(co_avg.send(13))
