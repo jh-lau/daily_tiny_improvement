@@ -3,12 +3,12 @@
 
 ## Python进阶
 - [闭包](Python进阶/闭包)
-- [装饰器](Python进阶/装饰器)
-- [属性修饰符](Python进阶/属性修饰符)
+- [装饰器](Python进阶/闭包/装饰器)
+- [属性修饰符](Python进阶/元编程/属性修饰符)
 - [元编程](Python进阶/元编程)
 - [异步与并发](Python进阶/并发并行与协程)
 - [socket编程](Python进阶/socket编程)
-- [标准库](Python进阶/标准库)
+- [标准库](Python进阶/常用库函数)
     - zip
     - sort
     - namedtuple
@@ -16,7 +16,7 @@
     - heapq
     - defaultdict
     - contextmanager
-- [Trick or Trap](Python进阶/trick_or_trap)
+- [Trick or Trap](Python进阶/常用库函数/trick_or_trap)
 
 ## 实用代码块
 - [多进程文件关键词搜索](snippets/关键字检索)
@@ -26,8 +26,8 @@
 - [维特比](snippets/viterbi.py)
 
 ## 实用库
-- [hanlp](实用库/hanlp_demo)
-- [latexify](实用库/latexify)
+- [hanlp](实用库/hanlp)
+- [latexify](实用库/公式代码化)
 - [爬虫](实用库/爬虫)
     - scrapy
     - selenium
