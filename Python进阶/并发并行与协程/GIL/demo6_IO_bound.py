@@ -16,7 +16,7 @@ def init_queue():
     print('init q start')
     while not q.empty():
         q.get()
-    for index in range(10):
+    for index in range(100):
         q.put(index)
     print('init q end')
     return
