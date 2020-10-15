@@ -8,6 +8,7 @@
 import time
 import threading
 import multiprocessing as mp
+from concurrent import futures
 
 
 def is_prime(num):
@@ -29,12 +30,12 @@ def prime(num):
 
 if __name__ == '__main__':
     # 1.单进程单线程
-    start = 100000
+    start = 10000
     t1 = time.time()
     for i in range(4):
         print(prime(i + start))
     print(f"Single process time cost: {time.time() - t1: .3f} seconds")
-    "Single process time cost:  42.275 seconds"
+    "Single process time cost:  33.275 seconds"
 
     # 2.单进程4个线程
     t2 = time.time()
@@ -46,7 +47,7 @@ if __name__ == '__main__':
     for job in jobs:
         job.join()
     print(f"Multi-threads process time cost: {time.time() - t2: .3f} seconds")
-    "Multi-threads process time cost:  40.640 seconds"
+    "Multi-threads process time cost:  46.640 seconds"
 
     # 3.4个独立进程
     t3 = time.time()
@@ -57,12 +58,25 @@ if __name__ == '__main__':
         j.start()
     for j in jobs:
         j.join()
+    # 错误写法 ↓
+    # for i in range(4):
+    #     p = mp.Process(target=prime, args=(start+i, ))
+    #     p.start()
+    #     p.join()
     print(f"Multi-processing process time cost: {time.time() - t3: .3f} seconds")
-    "Multi-processing process time cost:  18.997 seconds"
+    "Multi-processing process time cost:  10.997 seconds"
 
     # 4.进程池
     t4 = time.time()
     pool = mp.Pool(processes=4)
     result = pool.map(prime, range(start, start+4))
     print(f"Pool time cost: {time.time() - t4: .3f} seconds")
-    "Pool time cost:  15.963 seconds"
+    "Pool time cost:  10.963 seconds"
+
+    # 5.进程池另一种写法
+    t5 = time.time()
+    with futures.ProcessPoolExecutor() as pool:
+        temp = pool.map(prime, range(start, start+4))
+    print(f"Pool time cost: {time.time() - t5: .3f} seconds")
+    "Pool time cost:  10.483 seconds"
+

@@ -2,8 +2,8 @@
   @Author       : liujianhan
   @Date         : 2020/10/13 19:28
   @Project      : DailyTinyImprovement
-  @FileName     : demo2_多线程下载国旗.py
-  @Description  : Placeholder
+  @FileName     : demo2.0_多线程下载国旗1.py
+  @Description  : 多线程
 """
 from concurrent import futures
 from demo1_顺序下载国旗 import save_flag, get_flag, show, main

@@ -3,7 +3,7 @@
   @Date         : 2020/10/13 19:17
   @Project      : DailyTinyImprovement
   @FileName     : demo1_顺序下载国旗.py
-  @Description  : Placeholder
+  @Description  : 单线程
 """
 import os, time, sys, requests
 
