@@ -6,15 +6,14 @@
   @Description  : Placeholder
 """
 import math
-from concurrent import futures
 import time
+from concurrent import futures
 from functools import wraps
-import multiprocessing as mp
-from multiprocessing import Process, Lock, Queue
+from multiprocessing import Process
 from threading import Thread
+
 from cython_test import calc_distance as cd1
 from cython_test import calc_distance1 as cd2
-from dis import dis
 
 
 def calc_distance(point):
@@ -201,16 +200,16 @@ if __name__ == '__main__':
     point_list = list(gen_point_list(10))
     print(f"待计算距离数量：{len(point_list):,}")
 
-    print(calc_simple_encrypted(point_list)[:10])
-    calc_simple_encrypted2(point_list)
-    calc_simple(point_list)
-    calc_simple_map(point_list)
+    # calc_simple_encrypted(point_list)
+    # calc_simple_encrypted2(point_list)
+    # calc_simple(point_list)
+    # calc_simple_map(point_list)
     # calc_mul_thread(point_list)
     # calc_mul_proc(point_list)
-    lock = Lock()
-    # result = []
-    result = Queue()
-    calc_mul_proc2(point_list, result, lock)
+    # lock = Lock()
+    # # result = []
+    # result = Queue()
+    # calc_mul_proc2(point_list, result, lock)
     # calc_mul_thread2(point_list, result, lock)
     # print(result[:10])
 
@@ -231,6 +230,6 @@ if __name__ == '__main__':
 
     num = 100_000
     # print(calc_simple_map_prime(num))
-    # print(calc_simple_prime(num))
+    print(calc_simple_prime(num))
     # print(list(calc_mul_thread_prime(num)))
-    # print(list(calc_mul_proc_prime(num)))
+    print(list(calc_mul_proc_prime(num)))
