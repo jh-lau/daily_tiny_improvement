@@ -33,5 +33,5 @@ class FrozenJSON:
 if __name__ == '__main__':
     raw_feed = load()
     feed = FrozenJSON(raw_feed)
-    print(feed.Schedule.speakers)
+    print(feed.Schedule.speakers[-1].name)
     pass

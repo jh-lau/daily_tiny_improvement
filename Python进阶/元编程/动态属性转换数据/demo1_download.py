@@ -15,6 +15,7 @@ JSON = 'data/osconfeed.json'
 
 def load():
     if not os.path.exists(JSON):
+        os.mkdir(os.path.dirname(JSON))
         warnings.warn(f"downloading {URL} to {JSON}")
         with urlopen(URL) as remote, open(JSON, 'wb') as local:
             local.write(remote.read())
@@ -24,5 +25,6 @@ def load():
 
 
 if __name__ == '__main__':
-    feed = load()
-    print(sorted(feed['Schedule'].keys()))
+    # feed = load()
+    # print(sorted(feed['Schedule'].keys()))
+    pass
