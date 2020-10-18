@@ -2,10 +2,11 @@
   @Author       : liujianhan
   @Date         : 2020/10/13 19:28
   @Project      : DailyTinyImprovement
-  @FileName     : demo2.0_多线程下载国旗1.py
+  @FileName     : demo2.1_submit线程下载国旗2.py
   @Description  : Placeholder
 """
 from concurrent import futures
+from concurrent.futures import Future
 from demo1_顺序下载国旗 import save_flag, get_flag, show, main
 
 max_workers = 20
@@ -38,4 +39,8 @@ def download_many(cc_list):
 
 
 if __name__ == '__main__':
+    # task_list = []
+    # # 对主线程进行阻塞，参数表示何时停止阻塞
+    # futures.wait(task_list, return_when=futures.FIRST_COMPLETED)
+
     main(download_many)

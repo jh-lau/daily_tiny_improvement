@@ -2,7 +2,7 @@
   @Author       : liujianhan
   @Date         : 2020/10/13 19:28
   @Project      : DailyTinyImprovement
-  @FileName     : demo2.0_多线程下载国旗1.py
+  @FileName     : demo4_异步装饰器下载国旗.py
   @Description  : 单线程异步
 """
 import asyncio

@@ -5,7 +5,7 @@
   @FileName     : demo7_多进程的不同写法.py
   @Description  : Placeholder
 """
-from .demo6_多进程测试 import gen_point_list, calc_distance
+from .demo6_多进程多线程比较 import gen_point_list, calc_distance
 import multiprocessing as mp
 import time
 

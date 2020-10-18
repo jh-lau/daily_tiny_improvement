@@ -2,7 +2,7 @@
   @Author       : liujianhan
   @Date         : 2020/10/14 16:20
   @Project      : DailyTinyImprovement
-  @FileName     : demo6_多进程测试.py
+  @FileName     : demo6_多进程多线程比较.py
   @Description  : Placeholder
 """
 import math

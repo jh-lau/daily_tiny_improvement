@@ -2,7 +2,7 @@
   @Author       : liujianhan
   @Date         : 2020/10/13 19:28
   @Project      : DailyTinyImprovement
-  @FileName     : demo2.0_多线程下载国旗1.py
+  @FileName     : demo2.0_线程池下载国旗1.py
   @Description  : 多线程
 """
 from concurrent import futures
