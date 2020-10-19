@@ -6,16 +6,28 @@
   @Description  : Placeholder
 """
 from demo1_download import load
-from collections import abc
+from collections import abc, UserDict
+import keyword as ky
+
+
+class NewDict(UserDict):
+    def __missing__(self, key):
+        return f'No such key: {key}'
 
 
 class FrozenJSON:
     def __init__(self, mapping):
-        self.__data = dict(mapping)
+        self.__data = NewDict()
+        for key, value in mapping.items():
+            if key.isidentifier():
+                if ky.iskeyword(key):
+                    key += '_'
+                self.__data[key] = value
+            else:
+                raise KeyError(f'Invalid identifier: {key}')
 
     def __getattr__(self, item):
         if hasattr(self.__data, item):
-            print(f"hello, {item}")
             return getattr(self.__data, item)
         else:
             return FrozenJSON.build(self.__data[item])
@@ -30,8 +42,40 @@ class FrozenJSON:
             return obj
 
 
+class NewFrozenJSON:
+    def __new__(cls, args):
+        if isinstance(args, abc.Mapping):
+            return super().__new__(cls)
+        elif isinstance(args, abc.MutableSequence):
+            return [cls(item) for item in args]
+        else:
+            return args
+
+    def __init__(self, mapping):
+        self.__data = NewDict()
+        for key, value in mapping.items():
+            if key.isidentifier():
+                if ky.iskeyword(key):
+                    key += '_'
+                self.__data[key] = value
+            else:
+                raise KeyError(f'Invalid identifier: {key}')
+
+    def __getattr__(self, item):
+        if hasattr(self.__data, item):
+            return getattr(self.__data, item)
+        else:
+            return FrozenJSON.build(self.__data[item])
+
+
 if __name__ == '__main__':
     raw_feed = load()
-    feed = FrozenJSON(raw_feed)
-    print(feed.Schedule.speakers[-1].name)
+    raw_feed = {'name': 'jimbo', 'class': 19293, 'a2be': 'or not'}
+    # feed = FrozenJSON(raw_feed)
+    feed = NewFrozenJSON(raw_feed)
+    print(feed.class_)
+    print(feed.a2be)
+    print(feed.name)
+    print(feed.class__)
+    # print(feed.Schedule.speakers[-1].name)
     pass

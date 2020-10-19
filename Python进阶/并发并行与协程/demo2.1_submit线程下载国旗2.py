@@ -7,6 +7,7 @@
 """
 from concurrent import futures
 from concurrent.futures import Future
+from threading import Condition
 from demo1_顺序下载国旗 import save_flag, get_flag, show, main
 
 max_workers = 20

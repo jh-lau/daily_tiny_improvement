@@ -11,7 +11,7 @@ import time
 
 class GetUrl(Thread):
     def __init__(self, name):
-        super(GetUrl, self).__init__(name=name)
+        super().__init__(name=name)
 
     def run(self):
         print('get detail url started')
