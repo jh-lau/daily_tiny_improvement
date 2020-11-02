@@ -3,7 +3,7 @@
   @Date         : 20/10/27 23:28
   @Project      : DailyTinyImprovement
   @FileName     : module_1.py
-  @Description  : Placeholder
+  @Description  : 参数类型校验
 """
 from operator import sub
 

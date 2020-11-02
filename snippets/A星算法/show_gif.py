@@ -5,16 +5,19 @@
   @FileName     : show_gif.py
   @Description  : Placeholder
 """
-import imageio
 import os
+
+import imageio
 
 
 def compose_gif():
     gif_imgs = []
     for pic in os.listdir('pics'):
-        pic = f'{os.path.abspath(__file__)}/pics{pic}'
+        pic = f'{os.path.abspath(".")}/pics/{pic}'
         gif_imgs.append(imageio.imread(pic))
-    imageio.imsave('test.gif', gif_imgs, fps=1)
+    imageio.mimsave('test_20.gif', gif_imgs, fps=20)
+    imageio.mimsave('test_30.gif', gif_imgs, fps=30)
+    imageio.mimsave('test_60.gif', gif_imgs, fps=60)
 
 
 if __name__ == '__main__':
