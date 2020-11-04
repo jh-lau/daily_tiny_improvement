@@ -65,17 +65,19 @@ class NewFrozenJSON:
         if hasattr(self.__data, item):
             return getattr(self.__data, item)
         else:
-            return FrozenJSON.build(self.__data[item])
+            return NewFrozenJSON(self.__data[item])
 
 
 if __name__ == '__main__':
     raw_feed = load()
-    raw_feed = {'name': 'jimbo', 'class': 19293, 'a2be': 'or not'}
+    raw_feed = {'name': 'jimbo', 'class': 19293, 'a2be': 'or not', 'stick': {'a': 1, 'b': 2}}
     # feed = FrozenJSON(raw_feed)
     feed = NewFrozenJSON(raw_feed)
     print(feed.class_)
     print(feed.a2be)
     print(feed.name)
+    print(feed.stick.a)
+    print(feed.stick.b)
     print(feed.class__)
     # print(feed.Schedule.speakers[-1].name)
     pass
