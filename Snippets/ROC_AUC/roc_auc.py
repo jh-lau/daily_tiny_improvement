@@ -50,3 +50,6 @@ if __name__ == '__main__':
     print(auc(fpr, tpr))
     print(auc_v1(label, pre))
     print(auc_v2(label, pre))
+    label1 = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0]
+    pre1 = [.9, .8, .7, .7, .7, .7, .7, .7, .9, .8, .76]
+    print(auc_v1(label1, pre1))
