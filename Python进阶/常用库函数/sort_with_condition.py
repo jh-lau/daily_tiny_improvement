@@ -39,7 +39,7 @@ if __name__ == '__main__':
     # s.sort(key=lambda x: x[2])
     # print(s)
     # 按照第二个元素倒序，按照第三个元素升序排列
-    r.sort(key=lambda x: (x[0]['LX'], x[1]['LX'], -int(x[0]['LX'] == 21) * -x[2]))
-    print(r)
+    # r.sort(key=lambda x: (x[0]['LX'], x[1]['LX'], -int(x[0]['LX'] == 21) * -x[2]))
+    # print(r)
     r.sort(key=sort_func)
     print(r)
