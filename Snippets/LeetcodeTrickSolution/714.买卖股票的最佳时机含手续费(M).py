@@ -22,6 +22,18 @@
     0 < prices.length <= 50000.
     0 < prices[i] < 50000.
     0 <= fee < 50000.
+
+    思路：
+    定义状态转移方程：
+    不持有：dp[i][0] = max(dp[i - 1][0], dp[i - 1][1] + prices[i] - fee)
+    对于今天不持有，可以从两个状态转移过来：1. 昨天也不持有；2. 昨天持有，今天卖出。两者取较大值。
+    持有：dp[i][1] = max(dp[i - 1][1], dp[i - 1][0] - prices[i])
+    对于今天持有，可以从两个状态转移过来：1. 昨天也持有；2. 昨天不持有，今天买入。两者取较大值。
+
+    2. 给定转移方程初始值
+    对于第 0 天：
+    不持有： dp[0][0] = 0
+    持有（即花了 price[0] 的钱买入）： dp[0][1] = -prices[0]
 """
 from typing import List
 
@@ -37,7 +49,6 @@ class Solution:
         for i in range(1, n):
             dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i] - fee)
             dp[i][1] = max(dp[i-1][1], dp[i-1][0] - prices[i])
-
         return dp[-1][0]
 
     # 772ms, 21.5MB
@@ -50,7 +61,6 @@ class Solution:
             tmp = dp[0]
             dp[0] = max(dp[0], dp[1] + prices[i] - fee)
             dp[1] = max(dp[1], tmp-prices[i])
-
         return dp[0]
 
 
