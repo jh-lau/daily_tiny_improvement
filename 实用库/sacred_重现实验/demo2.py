@@ -16,7 +16,7 @@ def my_config():
     recipient = 'world'
     message = f"Hello {recipient}!"
 
-@ex.main
+@ex.automain
 def my_main(message, recipient, recipient2):
     print(message, recipient, recipient2)
 
