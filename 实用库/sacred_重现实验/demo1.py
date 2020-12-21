@@ -3,7 +3,7 @@
   @Date         : 2020/12/21 18:05
   @Project      : DailyTinyImprovement
   @FileName     : demo1.py
-  @Description  : Placeholder
+  @Description  : https://sacred.readthedocs.io/en/stable/configuration.html
 """
 from sacred import Experiment
 
