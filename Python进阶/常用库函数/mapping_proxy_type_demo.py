@@ -2,7 +2,7 @@
   @Author       : liujianhan
   @Date         : 2020/9/29 18:59
   @Project      : DailyTinyImprovement
-  @FileName     : mapping_proxy_type.py
+  @FileName     : mapping_proxy_type_demo.py
   @Description  : 不可变的映射类型：只读，可通过修改原始映射进行修改
 """
 from types import MappingProxyType

@@ -2,7 +2,7 @@
   @Author       : liujianhan
   @Date         : 2020/9/29 17:56
   @Project      : DailyTinyImprovement
-  @FileName     : userdict.py
+  @FileName     : 自定义字典.py
   @Description  : Placeholder
 """
 from collections import UserDict
