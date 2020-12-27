@@ -2,7 +2,7 @@
   @Author       : liujianhan
   @Date         : 2019/12/28 下午2:46
   @Project      : DailyTinyImprovement
-  @FileName     : 函数变量类型强制校验.py
+  @FileName     : signature_demo_函数变量类型强制校验.py
   @Description  : 强制参数校验
 """
 from functools import wraps
