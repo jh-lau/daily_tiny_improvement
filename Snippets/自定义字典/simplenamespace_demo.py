@@ -7,6 +7,7 @@
 """
 from types import SimpleNamespace as SN
 from collections import abc
+from 创建点号访问的字典 import NewFrozenJSON
 
 
 def dot_dict(info):
@@ -17,6 +18,14 @@ def dot_dict(info):
                 res.__dict__[k] = dot_dict(v)
 
         return res
+
+
+def test_kw(*args, **kwargs):
+    # kwargs = dot_dict(kwargs)
+    kwargs = NewFrozenJSON(kwargs)
+    print(kwargs.name)
+    print(kwargs.gender)
+    print(kwargs.gender1)
 
 
 if __name__ == '__main__':
@@ -30,12 +39,14 @@ if __name__ == '__main__':
     r = {'name': 'ross'}
     r1 = {'gender': 'male', 'age': 12, 'another_name': SN(**r)}
     r2 = SN(**r1)
-    print(r2.gender, r2.age, r2.another_name.name)
+    # print(r2.gender, r2.age, r2.another_name.name)
     # 封装方法
     d = {'name': 'gary', 'gender': 'male', 'age': 40,
          'child': {'name': 'josy', 'age': 123, 'child': {'name': 'chand', 'age': 2}}}
-    res = dot_dict(d)
-    print(res)
-    print(res.name, res.gender, res.age)
-    print(res.child.name, res.child.age, res.child.child)
-    print(res.child.child.name, res.child.child.age)
+    # res = dot_dict(d)
+    # print(res)
+    # print(res.name, res.gender, res.age)
+    # print(res.child.name, res.child.age, res.child.child)
+    # print(res.child.child.name, res.child.child.age)
+    test_kw(**d)
+

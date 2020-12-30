@@ -5,14 +5,13 @@
   @FileName     : demo2_frozen_json.py
   @Description  : Placeholder
 """
-from demo1_download import load
 from collections import abc, UserDict
 import keyword as ky
 
 
 class NewDict(UserDict):
     def __missing__(self, key):
-        return f'No such key: {key}'
+        return
 
 
 class FrozenJSON:
@@ -69,8 +68,6 @@ class NewFrozenJSON:
 
 
 if __name__ == '__main__':
-    raw_feed = load()
-    # 嵌套字典
     raw_feed = {'name': 'jimbo', 'class': 19293, 'a2be': 'or not', 'stick': {'a': 1, 'b': 2}}
     # feed = FrozenJSON(raw_feed)
     feed = NewFrozenJSON(raw_feed)
