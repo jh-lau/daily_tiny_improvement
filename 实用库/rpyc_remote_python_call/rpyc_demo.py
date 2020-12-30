@@ -28,3 +28,7 @@ if __name__ == '__main__':
     t = ThreadedServer(MyService, port=18861)
     t.start()
 
+    """
+    c = rpyc.connect('localhost', 18861)
+    c.root.get_answer()
+    """
