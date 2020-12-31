@@ -31,33 +31,37 @@ def get_logger(log_name, file_level=logging.FATAL, console_level=logging.FATAL, 
 
     log_name = 'logs/' + log_name
     logger = logging.getLogger(log_name)
-    logger.setLevel(file_level)
+    # 此处设定等级后，后续的handler再设等级只有比此等级高才有效，否则无效，如此处为INFO，后续的DEBUG将无效
+    logger.setLevel(logging.DEBUG)
 
-    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter('%(asctime)s '
+                                  '%(levelname)s '
+                                  '[%(filename)s:%(lineno)d:%(funcName)s:%(threadName)s] '
+                                  ': %(message)s')
 
-    fileHandler = logging.FileHandler(os.path.join(os.path.dirname(__file__), log_name + '.log'), encoding="utf-8",
-                                      mode=filemode)
-    fileHandler.setLevel(file_level)
-    fileHandler.setFormatter(formatter)
+    file_handler = logging.FileHandler(os.path.join(os.path.dirname(__file__), log_name + '.log'), encoding="utf-8",
+                                       mode=filemode)
+    file_handler.setLevel(file_level)
+    file_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
 
-    consoleHandler = logging.StreamHandler()
-    consoleHandler.setLevel(console_level)
-    consoleHandler.setFormatter(formatter)
-
-    logger.addHandler(fileHandler)
-    logger.addHandler(consoleHandler)
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.WARNING)
+    console_handler.setFormatter(formatter)
+    logger.addHandler(console_handler)
 
     return logger
 
 
 if __name__ == '__main__':
     logger1 = get_logger('logger1', file_level=logging.INFO, console_level=logging.INFO)
-    logger1.info('this is test log1')
-    logger1.info('this is test log2')
-    logger1.info('this is test log3')
-    logger1.warning('this is test log3')
+    logger1.info('this is test log11')
+    logger1.info('this is test log21')
+    logger1.info('this is test log31')
+    logger1.warning('this is test log31')
     logger2 = get_logger('logger2', file_level=logging.INFO, console_level=logging.INFO)
     logger2.info('this is test log1 in logger2')
     logger2.info('this is test log2')
     logger2.info('this is test log3')
+    logger2.debug('debug info')
     logger2.warning('this is test log3')
