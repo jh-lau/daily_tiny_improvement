@@ -4,7 +4,7 @@
   @Project      : DailyTinyImprovement
   @FileName     : demo4_byterun.py
   @Description  : Byterun 中有 4 种主要的类型对象：
-    VirtualMachine 类，管理最高层的结构，特别是调用栈，同时管理指令到操作的映射，是最开始写的 Interpreter 类的高级版本。
+    VirtualMachine 类，管理最高层的结构，特别是调用栈，同时管理指令到操作的映射，是最开始写的 Python解释器 类的高级版本。
     Frame 类，每一个 Frame 对象都维护一个 code object 引用，并管理一些必要的状态信息，例如全局与局部的命名空间，以及对调用它自身的帧的引用和最后执行的字节码
     Function 类，我们实现 Function 来控制新的帧的创建。
     Block 类，一个只包装了三个属性的类，控制代码流程的时候会用到。
