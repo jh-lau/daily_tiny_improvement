@@ -2,7 +2,7 @@
   @Author       : liujianhan
   @Date         : 2020/11/14 14:45
   @Project      : DailyTinyImprovement
-  @FileName     : 抽象工厂.py
+  @FileName     : 抽象工厂模式.py
   @Description  : https://github.com/faif/python-patterns/blob/master/patterns/creational/abstract_factory.py
 """
 import random

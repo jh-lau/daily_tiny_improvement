@@ -2,7 +2,7 @@
   @Author       : liujianhan
   @Date         : 2020/11/14 14:57
   @Project      : DailyTinyImprovement
-  @FileName     : 工厂.py
+  @FileName     : 简单工厂模式.py
   @Description  : Placeholder
 """
 from typing import Union
