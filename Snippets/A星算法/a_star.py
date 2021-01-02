@@ -19,7 +19,7 @@ class AStar:
         self.open_set = []
         self.close_set = []
 
-    def BaseCost(self, p):
+    def base_cost(self, p):
         x_dis = p.x
         y_dis = p.y
         # Distance to start point
@@ -32,7 +32,7 @@ class AStar:
         return x_dis + y_dis + (np.sqrt(2) - 2) * min(x_dis, y_dis)
 
     def TotalCost(self, p):
-        return self.BaseCost(p) + self.HeuristicCost(p)
+        return self.base_cost(p) + self.HeuristicCost(p)
 
     def IsValidPoint(self, x, y):
         if x < 0 or y < 0:
