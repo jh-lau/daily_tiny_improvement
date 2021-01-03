@@ -9,11 +9,8 @@ import sys
 import time
 
 import numpy as np
-
-from matplotlib.patches import Rectangle
-
 import point
-import random_map
+from matplotlib.patches import Rectangle
 
 
 class AStar:
