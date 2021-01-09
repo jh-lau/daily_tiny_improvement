@@ -9,7 +9,7 @@ import logging
 import os
 
 
-def set_logger(logger_name: str, save_file: str, logging_level: str = 'INFO'):
+def set_logger(logger_name: str, save_file: str, logging_level: str = logging.INFO):
     logger = logging.getLogger(logger_name)
     logging.basicConfig(
         format='%(asctime)s '
