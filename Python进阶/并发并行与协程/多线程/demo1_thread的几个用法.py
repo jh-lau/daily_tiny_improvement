@@ -22,7 +22,7 @@ def get_url(url):
 
 
 if __name__ == '__main__':
-    option = 2
+    option = 3
     # 此处有三个线程程：主线程，t1，t2
     # # 版本1：三个线程同时运行，耗时测试不准确
     if option == 1:

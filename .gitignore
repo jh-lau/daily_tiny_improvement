@@ -6,3 +6,4 @@ test*
 downloaded_flags/
 /Snippets/PDF下载/PDFs/
 /log*
+*.log

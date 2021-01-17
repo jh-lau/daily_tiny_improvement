@@ -7,6 +7,7 @@
  """
 import logging
 import os
+from datetime import datetime
 
 
 def set_logger(logger_name: str, save_file: str, logging_level: str = logging.INFO):
@@ -25,15 +26,15 @@ def set_logger(logger_name: str, save_file: str, logging_level: str = logging.IN
 
 
 def get_logger(log_name: str,
-               file_level=logging.FATAL,
-               console_level=logging.FATAL,
+               file_level=logging.INFO,
+               console_level=logging.INFO,
                filemode="w",
                to_screen: bool = True):  # a,追加, w,覆蓋
-    dest_dir = os.path.join(os.path.dirname(__file__)) + "/logs"
+    dest_dir = os.path.join(os.path.dirname(__file__)) + "/log"
     if not os.path.exists(dest_dir):
-        os.mkdir(dest_dir)  # 定义要创建的目录
+        os.makedirs(dest_dir)  # 定义要创建的目录
 
-    log_name = 'logs/' + log_name
+    # log_name = 'log/' + log_name
     logger = logging.getLogger(log_name)
     # 此处设定等级后，后续的handler再设等级只有比此等级高才有效，否则无效，如此处为INFO，后续的DEBUG将无效
     logger.setLevel(file_level)
@@ -43,7 +44,7 @@ def get_logger(log_name: str,
                                   '[%(filename)s:%(lineno)d:%(funcName)s:%(threadName)s] '
                                   ': %(message)s')
 
-    file_handler = logging.FileHandler(os.path.join(os.path.dirname(__file__), log_name + '.log'), encoding="utf-8",
+    file_handler = logging.FileHandler(os.path.join(dest_dir, log_name + '.log'), encoding="utf-8",
                                        mode=filemode)
     file_handler.setLevel(file_level)
     file_handler.setFormatter(formatter)
@@ -59,7 +60,10 @@ def get_logger(log_name: str,
 
 
 if __name__ == '__main__':
-    logger1 = get_logger('logger1', file_level=logging.INFO, console_level=logging.INFO)
+    s = set_logger('test', 're')
+    s.info('hello world')
+    f = datetime.now().strftime(f'%m%d-%H%M-red')
+    logger1 = get_logger(f)
     logger1.info('this is test log11')
     logger1.info('this is test log21')
     logger1.info('this is test log31')

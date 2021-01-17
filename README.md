@@ -27,7 +27,7 @@
 
 ## 实用库
 - [hanlp](实用库/hanlp)
-- [latexify](实用库/公式代码化)
+- [latexify](实用库/latexify_公式代码化)
 - [爬虫](实用库/爬虫)
     - scrapy
     - selenium
