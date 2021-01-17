@@ -29,3 +29,4 @@ if __name__ == '__main__':
     first_info = pb.one()
     one_info = set_info(first_info)
     print(one_info)
+    print(pb.MOBILE)

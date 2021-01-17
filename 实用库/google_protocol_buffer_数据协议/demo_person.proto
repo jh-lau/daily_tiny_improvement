@@ -26,3 +26,9 @@ message one{
   required int32 id = 1;
   required Person people = 2;
 }
+
+enum RaceType{
+  MOBILE = 0;
+  WORK = 1;
+  HOME = 2;
+}
