@@ -1,0 +1,24 @@
+syntax = "proto2";
+package test;
+// pip install --user grpcio grpcio-tools protobuf
+// python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. engine.proto
+service Engine {
+  rpc create_game(RequestCreateGame) returns (ResponseCreateGame){};
+  rpc join_game(RequestJoinGame) returns (ResponseJoinGame){};
+}
+
+message RequestCreateGame {
+
+}
+
+message ResponseCreateGame {
+  optional string create_res = 1;
+}
+
+message RequestJoinGame {
+  repeated string join_info = 1;
+}
+
+message ResponseJoinGame {
+  map<string, string> join_info = 1;
+}

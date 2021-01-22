@@ -19,6 +19,11 @@ def set_info(info_obj):
     score2 = person.score.add()
     score2.object = 'cpp'
     score2.score = 99
+    person.score.add(object='c#', score=20)
+    score = pb.Person().Score()
+    score.object = 'y'
+    score.score = 12
+    person.score.append(score)
     phone = person.number
     phone.phone = 10023
     # phone.type = 2
