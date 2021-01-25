@@ -12,8 +12,8 @@ from functools import wraps
 from multiprocessing import Process
 from threading import Thread
 
-from cython_test import calc_distance as cd1
-from cython_test import calc_distance1 as cd2
+# from cython_test import calc_distance as cd1
+# from cython_test import calc_distance1 as cd2
 
 
 def calc_distance(point):

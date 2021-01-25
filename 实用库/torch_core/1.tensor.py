@@ -14,6 +14,8 @@ if __name__ == '__main__':
     print(th.cuda.is_available())
     # 与arr共享内存
     t = th.tensor(arr, device='cpu')
+
+    # 张量属性
     print(t.data)
     print(t.dtype)
     print(t.shape)
@@ -23,11 +25,11 @@ if __name__ == '__main__':
     print(t.grad_fn)
     print(t.is_leaf)
 
+    # 创建张量
     out_t = th.tensor([1])
     t = th.zeros((3, 3), out=out_t)  # out参数，将该值也赋值给out_t
     print(out_t, '\n', t)
     print(id(t), id(out_t))
-
     print(th.zeros_like(out_t))
     print(th.full_like(t, 10))
     print(th.full((3, 3,), 2))
