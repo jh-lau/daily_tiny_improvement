@@ -1,12 +1,12 @@
 """
   @Author       : liujianhan
-  @Date         : 20/10/12 23:22
+  @Date         : 21/1/26 22:49
   @Project      : DailyTinyImprovement
-  @FileName     : demo1_thread的几个用法.py
+  @FileName     : 02_thread.py
   @Description  : Placeholder
 """
-from threading import Thread
 import time
+from threading import Thread
 
 
 def get_html(url):
@@ -54,4 +54,5 @@ if __name__ == '__main__':
         # 阻塞主线程
         t1.join()
         t2.join()
+        # 运行完之后返回主线程
         print(f"last time: {time.time() - s1:.2f}s")

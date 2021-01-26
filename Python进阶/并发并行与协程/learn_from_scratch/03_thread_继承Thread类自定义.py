@@ -2,7 +2,7 @@
   @Author       : liujianhan
   @Date         : 20/10/12 23:34
   @Project      : DailyTinyImprovement
-  @FileName     : demo2_继承Thread类自定义.py
+  @FileName     : 03_thread_继承Thread类自定义.py
   @Description  : Placeholder
 """
 from threading import Thread
