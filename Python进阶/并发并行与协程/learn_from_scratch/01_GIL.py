@@ -29,7 +29,7 @@ def sub():
 
 if __name__ == '__main__':
     # print(dis.dis(add))
-    count = 1000000
+    count = 10000000
     total = 0
     t1 = threading.Thread(target=plus)
     t2 = threading.Thread(target=sub)

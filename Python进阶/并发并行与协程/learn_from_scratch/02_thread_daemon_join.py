@@ -2,7 +2,7 @@
   @Author       : liujianhan
   @Date         : 21/1/26 22:49
   @Project      : DailyTinyImprovement
-  @FileName     : 02_thread.py
+  @FileName     : 02_thread_daemon_join.py
   @Description  : Placeholder
 """
 import time
