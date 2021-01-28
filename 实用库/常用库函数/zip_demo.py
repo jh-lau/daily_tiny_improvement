@@ -15,7 +15,12 @@ r = '!@$#%&^%&*(*&(())_'
 a = {'flower', 'flow', 'floool'}
 common_prefix_length = len([s for s in zip(*a) if len(set(s)) == 1])
 
+
 if __name__ == '__main__':
     # print(list(zip(t, r, s)))
     # print(list(zip_longest(t, r, s)))
     print(common_prefix_length)
+    count = 1
+    while count < 10:
+        print(f'{count}: hello world')
+        count += 1
