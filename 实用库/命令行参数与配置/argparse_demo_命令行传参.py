@@ -9,11 +9,10 @@ import argparse
 import sys
 
 if __name__ == '__main__':
-    # parser = argparse.ArgumentParser(description='Process some integers')
-    # parser.add_argument('integers', metavar='N', type=int, nargs='+',
-    #                     help='an integer for the accumulator')
-    # parser.add_argument('--sum', dest='accumulate', action='store_const',
-    #                     const=sum, default=max, help='sum the integers (default: find the max)')
-    # args = parser.parse_args()
-    # print(args.accumulate(args.integers))
-    print(sys.argv)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-id', dest='assume_id', type=str, required=False)
+    parser.add_argument('-url', dest='ws_url', type=str, required=False)
+    args = parser.parse_args()
+    # assume_id = '12345678'
+    # url = 'ws://10.20.20.125:9903/combat'
+    print(dir(args))
