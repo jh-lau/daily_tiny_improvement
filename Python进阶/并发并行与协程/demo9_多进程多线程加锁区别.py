@@ -63,6 +63,7 @@ if __name__ == '__main__':
             deposit(num, money)
             withdraw(num, money)
             print(f"Time costs in sequential: {time.time() - t1:.2f}s, result: {money.value}")
+
         elif option == 2:
             t1 = time.time()
             d = Thread(target=deposit, args=(num, money,))
@@ -73,6 +74,7 @@ if __name__ == '__main__':
             d.join()
             w.join()
             print(f"Time costs without lock[Multi-thread]: {time.time() - t1:.2f}s, result: {money.value}")
+
         elif option == 3:
             t1 = time.time()
             d = Process(target=deposit, args=(num, money,))
@@ -83,6 +85,7 @@ if __name__ == '__main__':
             d.join()
             w.join()
             print(f"Time costs without lock[Multi-process]: {time.time() - t1:.2f}s, result: {money.value}")
+
         elif option == 4:
             t1 = time.time()
             d = Process(target=deposit, args=(num, money, lock))
@@ -93,6 +96,7 @@ if __name__ == '__main__':
             d.join()
             w.join()
             print(f"Time costs with lock inside for loop[Multi-process]: {time.time() - t1:.2f}s, result: {money.value}")
+
         elif option == 5:
             t1 = time.time()
             d = Process(target=deposit, args=(num, money, lock, 0))
@@ -103,6 +107,7 @@ if __name__ == '__main__':
             d.join()
             w.join()
             print(f"Time costs with lock outside for loop[Multi-process]: {time.time() - t1:.2f}s, result: {money.value}")
+
         elif option == 6:
             t1 = time.time()
             d = Thread(target=deposit, args=(num, money, lock))
@@ -113,6 +118,7 @@ if __name__ == '__main__':
             d.join()
             w.join()
             print(f"Time costs with lock outside for loop[Multi-thread]: {time.time() - t1:.2f}s, result: {money.value}")
+
         elif option == 7:
             t1 = time.time()
             d = Thread(target=deposit, args=(num, money, lock, 0))
