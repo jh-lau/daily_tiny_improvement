@@ -8,11 +8,11 @@
 from collections import namedtuple
 from pprint import pprint as print
 
-grade = namedtuple('student', ('score', 'weight'))
+grade = namedtuple('grade', ('score', 'weight', 'info'))
 
 if __name__ == '__main__':
-    g1 = grade([100, 12, 123, 123], .23)
-    g2 = grade(80, .34)
+    g1 = grade([100, 12, 123, 123], .23, 'math')
+    g2 = grade(80, .34, 'physics')
     print(g1.score)
     print(g1.weight)
     print(g1.score.count(123))
