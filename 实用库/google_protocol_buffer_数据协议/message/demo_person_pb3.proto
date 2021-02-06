@@ -1,0 +1,34 @@
+syntax = "proto3";
+package infos;
+
+//protoc --python_out=. demo_person.proto
+message Person{
+  int32 age = 2;
+  string name = 3;
+  enum PhoneType{
+    MOBILE = 0;
+    WORK = 1;
+    HOME = 2;
+  }
+  message Score{
+    string object = 1;
+    int32 score = 2;
+  }
+  message PhoneNumber{
+    int32 phone = 1;
+    PhoneType type = 2;
+  }
+  repeated Score score = 4;
+  PhoneNumber number = 5;
+}
+
+message one{
+  int32 id = 1;
+  Person people = 2;
+}
+
+enum RaceType{
+  MOBILE = 0;
+  WORK = 1;
+  HOME = 2;
+}

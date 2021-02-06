@@ -5,7 +5,8 @@
   @FileName     : demo_proto.py
   @Description  : Placeholder
 """
-import demo_person_pb2 as pb
+# import demo_person_pb2 as pb
+import demo_person_pb3_pb2 as pb
 
 
 def set_info(info_obj):
