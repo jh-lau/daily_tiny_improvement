@@ -1,7 +1,7 @@
 syntax = "proto3";
 package infos;
 
-//protoc --python_out=. demo_person.proto
+//protoc --python_out=. demo_person_pb3.proto
 message Person{
   int32 age = 2;
   string name = 3;
@@ -20,6 +20,7 @@ message Person{
   }
   repeated Score score = 4;
   PhoneNumber number = 5;
+  map<string, Score> dict_score = 6;
 }
 
 message one{
