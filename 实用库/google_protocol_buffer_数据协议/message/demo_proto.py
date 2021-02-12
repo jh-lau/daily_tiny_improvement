@@ -38,6 +38,7 @@ def set_info(info_obj):
 
     phone = person.number
     phone.phone = 10023
+
     # phone.type = 2
     return info_obj
 
