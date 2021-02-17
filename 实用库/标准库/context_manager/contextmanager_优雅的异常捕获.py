@@ -6,8 +6,8 @@
   @Description  : Placeholder
 """
 import contextlib
-from typing import Union, Callable
 from functools import wraps
+from typing import Union, Callable
 
 
 class ExternalServiceError:
@@ -80,7 +80,26 @@ def simple_func():
     assert 0, f"wrong number"
 
 
+def division_by_zero():
+    return 1 / 0
+
+
+def inter_sample():
+    try:
+        division_by_zero()
+    except Exception as e:
+        raise e
+
+
+def sample():
+    try:
+        inter_sample()
+    except Exception as e:
+        print(e)
+
+
 if __name__ == '__main__':
     # exception_handle2()
     # exception_handle1()
-    simple_func()
+    # simple_func()
+    sample()

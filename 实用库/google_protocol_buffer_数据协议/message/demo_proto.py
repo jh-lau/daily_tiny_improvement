@@ -33,7 +33,7 @@ def set_info(info_obj):
     person.score.append(score)
 
     # map属性写法1
-    person.dict_score['physics'].object = 'geo'
+    person.dict_score['physics'].object = 'physics'
     person.dict_score['physics'].score = 100
 
     phone = person.number
