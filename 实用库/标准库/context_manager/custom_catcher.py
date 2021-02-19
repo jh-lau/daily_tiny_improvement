@@ -8,24 +8,36 @@
 import contextlib
 import functools
 
-
+# 正确写法1
 def decorate_check_error(error_enum: int = 1):
     def decorator(func):
         @functools.wraps(func)
-        def _check_error(*args, **kwargs):
+        def _check_error(self, *args, **kwargs):
             try:
-                func(*args, **kwargs)
+                func(self, *args, **kwargs)
             except TypeError:
-                print('type error')
+                self.reset()
             except ZeroDivisionError:
-                print('zero error')
+                self.restart()
 
         return _check_error
 
     return decorator
 
 
+# 待修改写法
+@contextlib.contextmanager
+def catcher_outside(self):
+    try:
+        yield
+    except TypeError:
+        self.reset()
+    except ZeroDivisionError:
+        self.restart()
+
+
 class Temp:
+    # 正确写法2
     @contextlib.contextmanager
     def catch_websocket_connection_errors(self):
         try:
@@ -43,6 +55,10 @@ class Temp:
         with self.catch_websocket_connection_errors():
             raise TypeError
 
+    @decorate_check_error()
+    def get_info(self):
+        raise TypeError
+
     def reset(self):
         print('reseting...')
 
@@ -52,5 +68,4 @@ class Temp:
 
 if __name__ == '__main__':
     t = Temp()
-    t.division_zero()
-    t.type_error()
+    t.get_info()
