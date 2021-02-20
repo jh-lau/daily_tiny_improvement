@@ -8,6 +8,7 @@
 import contextlib
 import functools
 
+
 # 正确写法1
 def decorate_check_error(error_enum: int = 1):
     def decorator(func):
@@ -48,6 +49,7 @@ class Temp:
             self.restart()
 
     def division_zero(self):
+        # 正确写法2的用法
         with self.catch_websocket_connection_errors():
             raise ZeroDivisionError
 
@@ -55,7 +57,8 @@ class Temp:
         with self.catch_websocket_connection_errors():
             raise TypeError
 
-    @decorate_check_error()
+    # @decorate_check_error()
+    @catch_websocket_connection_errors()
     def get_info(self):
         raise TypeError
 
