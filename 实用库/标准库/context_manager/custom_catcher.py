@@ -9,16 +9,40 @@ import contextlib
 import functools
 
 
+class NeedResetError(Exception):
+    pass
+
+
+class NeedFullRestartError(Exception):
+    pass
+
+
 # 正确写法1
-def decorate_check_error(error_enum: int = 1):
+def decorate_catch_error(error_enum: int = 1):
     def decorator(func):
         @functools.wraps(func)
         def _check_error(self, *args, **kwargs):
             try:
-                func(self, *args, **kwargs)
-            except TypeError:
+                return func(self, *args, **kwargs)
+            except TypeError as e:
+                raise NeedResetError("需要重置") from e
+            except ZeroDivisionError as e:
+                raise NeedFullRestartError("需要重启") from e
+
+        return _check_error
+
+    return decorator
+
+
+def decorate_deal_error(error_enum: int = 1):
+    def decorator(func):
+        @functools.wraps(func)
+        def _check_error(self, *args, **kwargs):
+            try:
+                return func(self, *args, **kwargs)
+            except NeedResetError:
                 self.reset()
-            except ZeroDivisionError:
+            except NeedFullRestartError:
                 self.restart()
 
         return _check_error
@@ -40,35 +64,54 @@ def catcher_outside(self):
 class Temp:
     # 正确写法2
     @contextlib.contextmanager
-    def catch_websocket_connection_errors(self):
+    def deal_runtime_error(self):
         try:
             yield
-        except TypeError:
+        except NeedResetError:
             self.reset()
-        except ZeroDivisionError:
+        except NeedFullRestartError:
             self.restart()
 
+    @contextlib.contextmanager
+    def catch_runtime_error(self):
+        try:
+            yield
+        except TypeError as e:
+            raise NeedResetError("需要重置") from e
+        except ZeroDivisionError as e:
+            raise NeedFullRestartError("需要重启") from e
+
     def division_zero(self):
-        # 正确写法2的用法
-        with self.catch_websocket_connection_errors():
+        # 正确写法2的单独用法
+        with self.catch_runtime_error():
             raise ZeroDivisionError
 
     def type_error(self):
-        with self.catch_websocket_connection_errors():
+        with self.catch_runtime_error():
             raise TypeError
 
-    # @decorate_check_error()
-    @catch_websocket_connection_errors()
+    # 多重异常捕获写法1
     def get_info(self):
-        raise TypeError
+        with self.deal_runtime_error():
+            with self.catch_runtime_error():
+                raise TypeError
 
-    def reset(self):
-        print('reseting...')
+    # 多重异常捕获写法2
+    @decorate_deal_error()
+    @decorate_catch_error()
+    def get_name(self):
+        raise ZeroDivisionError
 
-    def restart(self):
+    @staticmethod
+    def reset():
+        print('resetting...')
+
+    @staticmethod
+    def restart():
         print('restarting...')
 
 
 if __name__ == '__main__':
     t = Temp()
     t.get_info()
+    t.get_name()
