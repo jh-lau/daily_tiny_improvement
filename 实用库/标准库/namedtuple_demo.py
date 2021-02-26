@@ -21,6 +21,7 @@ if __name__ == '__main__':
     # g2 = grade(80, .34, 'physics')
     # print(g1.score)
     # print(g1.weight)
+
     # print(g1.score.count(123))
     # print(g2.count(.34))
 
