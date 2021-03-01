@@ -20,8 +20,6 @@ class Temp:
         while num:
             num -= 1
             time.sleep(1)
-            # if num < 98:
-            #     raise
             print(f"当前读数：{num}")
 
 
