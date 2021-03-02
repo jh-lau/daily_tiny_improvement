@@ -7,6 +7,9 @@
 """
 import contextlib
 import functools
+from typing import Callable
+
+from logger_demo_日志设置 import get_logger
 
 
 class NeedResetError(Exception):
@@ -18,15 +21,17 @@ class NeedFullRestartError(Exception):
 
 
 # 正确写法1
-def decorate_catch_error(error_enum: int = 1):
+def decorate_catch_error(logger):
     def decorator(func):
         @functools.wraps(func)
         def _check_error(self, *args, **kwargs):
             try:
                 return func(self, *args, **kwargs)
             except TypeError as e:
+                logger.info(f"get exception: {e}")
                 raise NeedResetError("需要重置") from e
             except ZeroDivisionError as e:
+                logger.info(f"get exception: {e}")
                 raise NeedFullRestartError("需要重启") from e
 
         return _check_error
@@ -62,6 +67,8 @@ def catcher_outside(self):
 
 
 class Temp:
+    logger = get_logger('test_logger')
+
     # 正确写法2
     @contextlib.contextmanager
     def deal_runtime_error(self):
@@ -98,7 +105,7 @@ class Temp:
 
     # 多重异常捕获写法2
     @decorate_deal_error()
-    @decorate_catch_error()
+    @decorate_catch_error(logger)
     def get_name(self):
         raise ZeroDivisionError
 
