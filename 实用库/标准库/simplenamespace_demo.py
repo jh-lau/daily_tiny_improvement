@@ -37,5 +37,4 @@ if __name__ == '__main__':
     res = dot_dict(d)
     print(res)
     print(res.name, res.gender, res.age)
-    print(res.child.name, res.child.age, res.child.child)
     print(res.child.child.name, res.child.child.age)
