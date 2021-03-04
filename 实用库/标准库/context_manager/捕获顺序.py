@@ -16,5 +16,5 @@ if __name__ == '__main__':
         raise NameError("name error")
     except NameError:
         print('name error')
-    except Exception:
-        print('other error')
+    except Exception as e:
+        print('other error', e)
