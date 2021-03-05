@@ -26,11 +26,13 @@ def set_logger(logger_name: str, save_file: str, logging_level: str = logging.IN
 
 
 def get_logger(log_name: str,
+               file_path: str = '',
                file_level=logging.INFO,
                console_level=logging.INFO,
                filemode="w",
                to_screen: bool = True):  # a,追加, w,覆蓋
-    dest_dir = os.path.join(os.path.dirname(__file__)) + "/log"
+    file_path = file_path or os.path.join(os.path.dirname(__file__))
+    dest_dir = file_path + "/log"
     if not os.path.exists(dest_dir):
         os.makedirs(dest_dir)  # 定义要创建的目录
 
@@ -60,8 +62,6 @@ def get_logger(log_name: str,
 
 
 if __name__ == '__main__':
-    s = set_logger('test', 're')
-    s.info('hello world')
     f = datetime.now().strftime(f'%m%d-%H%M-red')
     logger1 = get_logger(f)
     logger1.info('this is test log11')
