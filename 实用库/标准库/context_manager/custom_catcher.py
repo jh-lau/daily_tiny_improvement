@@ -47,8 +47,10 @@ def decorate_deal_error(error_enum: int = 1):
                 return func(self, *args, **kwargs)
             except NeedResetError:
                 self.reset()
+                return '1'
             except NeedFullRestartError:
                 self.restart()
+                return '12'
 
         return _check_error
 
@@ -106,8 +108,11 @@ class Temp:
     # 多重异常捕获写法2
     @decorate_deal_error()
     @decorate_catch_error(logger)
-    def get_name(self):
-        raise ZeroDivisionError
+    def get_name(self, a):
+        if a:
+            return 'yes'
+        else:
+            raise ZeroDivisionError
 
     @staticmethod
     def reset():
@@ -120,5 +125,4 @@ class Temp:
 
 if __name__ == '__main__':
     t = Temp()
-    t.get_info()
-    t.get_name()
+    print(t.get_name(''))
