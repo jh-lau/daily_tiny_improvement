@@ -123,6 +123,14 @@ class Temp:
         print('restarting...')
 
 
+class TempSub(Temp):
+    def get_name(self, a):
+        if a:
+            return 'in sub'
+        else:
+            raise ZeroDivisionError
+
+
 if __name__ == '__main__':
-    t = Temp()
+    t = TempSub()
     print(t.get_name(''))
