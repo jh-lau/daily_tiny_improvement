@@ -126,7 +126,7 @@ class Temp:
 class TempSub(Temp):
     def get_name(self, a):
         if a:
-            return 'in sub'
+            return 'in sub class'
         else:
             raise ZeroDivisionError
 
