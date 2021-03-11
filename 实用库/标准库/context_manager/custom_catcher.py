@@ -116,11 +116,11 @@ class Temp:
 
     @staticmethod
     def reset():
-        print('resetting...')
+        print('resetting....')
 
     @staticmethod
     def restart():
-        print('restarting...')
+        print('restarting....')
 
 
 class TempSub(Temp):
