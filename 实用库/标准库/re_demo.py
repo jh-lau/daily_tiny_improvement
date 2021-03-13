@@ -3,7 +3,7 @@
   @Date         : 21/3/12 15:33
   @Project      : DailyTinyImprovement
   @FileName     : re_demo.py
-  @Description  : Placeholder
+  @Description  :
 """
 import re
 
