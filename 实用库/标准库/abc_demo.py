@@ -17,7 +17,7 @@ class Base(ABC):
 class Person(Base):
     @abstractmethod
     def get_name(self):
-        print('hello')
+        print('get_name')
 
 
 class Student(Person):
