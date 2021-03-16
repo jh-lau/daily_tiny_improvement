@@ -30,7 +30,6 @@ class B(A):
         return 1
 
 
-
 class C(B):
     @classmethod
     def priority(cls):
@@ -38,4 +37,4 @@ class C(B):
 
 
 if __name__ == '__main__':
-    print([s.name() for s in A.all_subclasses() if s.priority() == 2])
+    print([s.name() for s in A.all_subclasses() if s.priority() > 0])
