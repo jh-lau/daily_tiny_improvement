@@ -15,12 +15,14 @@ class Base(ABC):
 
 
 class Person(Base):
+    @abstractmethod
     def get_name(self):
         print('hello')
 
 
 class Student(Person):
-    pass
+    def get_name(self):
+        print('age')
 
 
 if __name__ == '__main__':
