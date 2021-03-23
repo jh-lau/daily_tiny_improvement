@@ -26,7 +26,7 @@ def flatten_for(items, ignore_types=(bytes, str)):
 
 
 if __name__ == '__main__':
-    items = [1, 2, [3, 4, [5, 6], 7], 8]
-    # items = ['Dave', 'Paula', ['Thomas', 'Lewis']]
-    print([x for x in flatten([items])])
-    print([x for x in flatten_for([items])])
+    item_list = [1, 2, [3, 4, [5, 6], 7], 8]
+    # item_list = ['Dave', 'Paula', ['Thomas', 'Lewis']]
+    print([x for x in flatten([item_list])])
+    print([x for x in flatten_for([item_list])])
