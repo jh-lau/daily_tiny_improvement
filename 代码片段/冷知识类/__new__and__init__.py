@@ -3,7 +3,7 @@
   @Date         : 20/10/11 22:43
   @Project      : DailyTinyImprovement
   @FileName     : __new__and__init__.py
-  @Description  : Placeholder
+  @Description  :
 """
 
 
