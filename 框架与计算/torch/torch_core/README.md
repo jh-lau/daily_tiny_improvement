@@ -10,4 +10,4 @@
 
 > Reference
 
-[阿泽的学习笔记](http://shorturl.at/sCDUW)
+[阿泽的学习笔记](https://mp.weixin.qq.com/mp/homepage?__biz=MzIwMDIzNDI2Ng==&hid=10&sn=25d0262fcb130258ed1a516f298c7ee4&scene=18#wechat_redirect)
