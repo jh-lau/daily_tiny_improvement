@@ -47,16 +47,16 @@ if __name__ == '__main__':
     optimizer = t.optim.SGD(lr_net1.parameters(), lr=lr, momentum=.9)
     iterations = 1000
     for it in range(iterations):
-        # forward
+        # 1-forward
         y_pred = lr_net1(train_x)
         # y_pred = lr_net2(train_x)
-        # loss
+        # 2-loss
         loss = loss_fn(y_pred.squeeze(), train_y)
-        # backward
+        # 3-backward
         loss.backward()
-        # update parameters
+        # 4-update parameters
         optimizer.step()
-        # clean grad
+        # 5-clean grad
         optimizer.zero_grad()
         if it % 20 == 0:
             print(f"Start {it}th iteration learning...")
