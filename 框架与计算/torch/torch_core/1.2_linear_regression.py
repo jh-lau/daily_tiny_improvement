@@ -2,7 +2,7 @@
   @Author       : liujianhan
   @Date         : 2021/1/27 14:39
   @Project      : DailyTinyImprovement
-  @FileName     : 2.linear_regression.py
+  @FileName     : 1.2_linear_regression.py
   @Description  : Placeholder
 """
 import torch as th
@@ -18,6 +18,7 @@ if __name__ == '__main__':
     b = th.zeros((1,), requires_grad=True)
 
     for i in range(100000):
+        # 前向传播
         wx = th.mul(w, x)
         y_pred = th.add(wx, b)
 
