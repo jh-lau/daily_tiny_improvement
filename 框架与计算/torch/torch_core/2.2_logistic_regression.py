@@ -37,13 +37,16 @@ if __name__ == '__main__':
 
     train_x = t.cat([x0, x1], 0)
     train_y = t.cat([y0, y1], 0)
+    # Model
     lr_net1 = LR()
-    lr_net2 = t.nn.Sequential(
-        t.nn.Linear(2, 1),
-        t.nn.Sigmoid()
-    )
+    # lr_net2 = t.nn.Sequential(
+    #     t.nn.Linear(2, 1),
+    #     t.nn.Sigmoid()
+    # )
+    # Loss function
     loss_fn = t.nn.BCELoss()
     lr = .01
+    # Optimizer
     optimizer = t.optim.SGD(lr_net1.parameters(), lr=lr, momentum=.9)
     iterations = 1000
     for it in range(iterations):
