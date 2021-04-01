@@ -15,10 +15,10 @@
     - clear gradient
 
 ### 1. 数据载体张量与线性回归
-![](pics/chp1.png)
+- ![1](pics/chp1.png)
 
 ### 2. 动态图、自动求导与逻辑回归
-![](pics/chp2.png)
+- ![2](pics/chp2.png)
 - 区分静态图和动态图
 - 自动求导机制`torch.autograd.backward()`和`torch.autograd.grad()`
     - 梯度手动清零
@@ -26,11 +26,10 @@
     - 依赖叶子节点的节点默认进行求梯度操作
     
 ### 3. 数据读取机制与图像预处理模块
-![](pics/chp3.png)
+- ![3](pics/chp3.png)
 
 ### 4. Module和Containers源码解析
-![](pics/chp4.png)
-
+- ![4](pics/chp4.png)
 - 模块构建机制
     - 先有一个目标网络的 `Module` 继承 `nn.Module` 这个基类
     - 然后该目标网络的 `Module` 里面又可以有很多的子模块，这些子模块同样也是继承于 `nn.Module`
@@ -42,13 +41,13 @@
     - 每个 `module` 都有 `8` 个字典管理它的属性(最常用的就是`_parameters`，`_modules` )
 
 ### 5. `nn`模块中的网络层
-![](pics/chp5.png)
-
+- ![5](pics/chp5.png)
 - 卷积尺寸计算公式
-    - ![](pics/chp5-1.png)
+    - ![5。1](pics/chp5-1.png)
 
 ### 6. 初始化与损失函数
-![](pics/chp6.png)
+- ![6](pics/chp6.png)
+- Xavier权重初始化，有利于缓解带有sigmoid，tanh的这样的饱和激活函数的神经网络的梯度消失和爆炸现象，不过不适用于`Relu`激活函数
 
 > Reference
 
