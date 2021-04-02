@@ -1,18 +1,17 @@
 ## 流程
-- 数据 Data
-- 模型 Model
-    - 模型创建
-        - 构建网络层
-        - 拼接网络层
-    - 权值初始化
-- 损失函数 Loss function
-- 优化器 Optimizer
-- 迭代步骤
-    - forward
-    - compute loss
-    - backward
-    - update parameters
-    - clear gradient
+- 1.数据准备与处理 Data
+- 2.模型构建
+    - 构建网络层
+    - 拼接网络层
+- 3.权值初始化 initialize_weights
+- 4.损失函数 Loss function
+- 5.优化器 Optimizer
+- 6.迭代步骤
+    - 1.forward
+    - 2.compute loss
+    - 3.backward
+    - 4.update parameters
+    - 5.clear gradient
 
 ### 1. 数据载体张量与线性回归
 - ![1](pics/chp1.png)
@@ -48,6 +47,25 @@
 ### 6. 初始化与损失函数
 - ![6](pics/chp6.png)
 - Xavier权重初始化，有利于缓解带有sigmoid，tanh的这样的饱和激活函数的神经网络的梯度消失和爆炸现象，不过不适用于`Relu`激活函数
+- 损失函数
+    - ![6.1](pics/chp6.1.png)
+    - 交叉熵
+        - 信息熵（自信息）
+            - 事件发生概率的对数再取反，概率越大，自信息越少
+        - 相对熵（KL散度）
+            - 衡量两个分布之间的差异（不是距离函数，因为不满足距离的三个性质之一：对称性）
+        - 交叉熵
+            - 交叉熵 = 信息熵 + 相对熵 （相对熵 = 交叉熵 - 信息熵）
+            - ![证明过程](pics/chp6.2.png)
+            
+### 7. 优化器源码解析和学习率调整策略
+- ![7](pics/chp7.png)
+
+### 8. Tensorboard 可视化与 Hook 机制
+- ![8](pics/chp8.png)
+
+### 9. 正则化与标准化
+- ![9](pics/chp9.png)
 
 > Reference
 

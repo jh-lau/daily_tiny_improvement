@@ -29,24 +29,9 @@ class LeNet(nn.Module):
         out = self.fc3(out)
         return out
 
-
-class LeNet2(nn.Module):
-    def __init__(self, classes):
-        super().__init__()
-        self.conv1 = nn.Conv2d(3, 6, 5)
-        self.covn2 = nn.Conv2d(6, 16, 5)
-        self.max2d = nn.MaxPool2d(2)
-        self.fc1 = nn.Linear(16 * 5 * 5, 120)
-        self.fc2 = nn.Linear(120, 84)
-        self.fc3 = nn.Linear(84, classes)
-
-    def forward(self, x):
-        out = F.relu(self.conv1(x))
-        out = self.max2d(out)
-        out = F.relu(self.conv(out))
-        out = self.max2d(out)
-        out = out.view(out.size(0), -1)
-        out = F.relu(self.fc1(out))
-        out = F.relu(self.fc2(out))
-        out = self.fc3(out)
-        return out
+    def initialize_weights(self):
+        # todo
+        for m in self.modules():
+            # 初始化的避免梯度爆炸和消失的指导原则：方差一致性原则
+            if isinstance(m, nn.Linear):
+                nn.init.kaiming_normal_(m.weight.data)

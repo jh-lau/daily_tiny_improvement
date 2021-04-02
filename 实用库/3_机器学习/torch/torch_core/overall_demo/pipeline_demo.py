@@ -1,8 +1,8 @@
 """
   @Author       : liujianhan
-  @Date         : 21/3/31 11:02
+  @Date         : 21/4/2 10:34
   @Project      : DailyTinyImprovement
-  @FileName     : 3.1_dataloader.py
+  @FileName     : pipeline_demo.py
   @Description  : Placeholder
 """
 import os
@@ -12,7 +12,7 @@ from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from torch import nn, optim
 
-from .lenet import LeNet
+from lenet import LeNet
 
 BATCH_SIZE = 10
 MAX_EPOCH = 100

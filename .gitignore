@@ -8,3 +8,4 @@ downloaded_flags/
 /log*
 *.log
 build/
+tensorboard_log
