@@ -12,11 +12,12 @@ from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from torch import nn, optim
 
-from lenet import LeNet
+from .lenet import LeNet
 
 BATCH_SIZE = 10
 MAX_EPOCH = 100
 LR = .005
+SAVE_INTERVAL = 100
 
 
 class RMBDataset(Dataset):
@@ -105,5 +106,6 @@ if __name__ == '__main__':
             loss.backward()
             # 6.4 参数更新
             optimizer.step()
+            scheduler.step()  # 学习率更新
             # 6.5 梯度清零
             optimizer.zero_grad()

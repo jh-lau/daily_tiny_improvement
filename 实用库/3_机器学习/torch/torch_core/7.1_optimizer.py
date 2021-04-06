@@ -12,10 +12,13 @@ if __name__ == '__main__':
     weight = torch.randn((2, 2), requires_grad=True)
     weight.grad = torch.ones((2, 2))
 
-    optimizer = optim.SGD([weight], lr=.1)
+    optimizer = optim.SGD([weight], lr=.1, momentum=.8)
     print(f"weight before step:\n {weight.data}")
-    optimizer.step()  # w = w - lr * w.grad
+    print(f"optimizer before step: \n {optimizer.state_dict()}")
+    for _ in range(10):
+        optimizer.step()  # w = w - lr * w.grad
     print(f"weight after step:\n {weight.data}")
+    print(f"optimizer after step: \n {optimizer.state_dict()} \n")
 
     print(f"weight in optimizer: {id(optimizer.param_groups[0]['params'][0])}\n"
           f"weight in weight: {id(weight)}")

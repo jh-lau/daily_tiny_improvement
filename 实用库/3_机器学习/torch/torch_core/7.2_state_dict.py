@@ -19,6 +19,7 @@ if __name__ == '__main__':
     reloading = 1
     if reloading:
         state_dict = torch.load(os.path.join(BASE_DIR, 'optimizer_state_dict.pkl'))
+        print(f"state dict from checkpoint: {state_dict}")
         optimizer.load_state_dict(state_dict)
         print(f"State after load state from checkpoint: \n {optimizer.state_dict()}")
     else:
