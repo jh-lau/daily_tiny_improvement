@@ -25,4 +25,4 @@ for d in date:
 
 if __name__ == '__main__':
     print(date)
-    print(result)
+    # print(result)
