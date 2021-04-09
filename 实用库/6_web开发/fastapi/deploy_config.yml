@@ -1,0 +1,10 @@
+url: /predict
+port: 5080
+params:
+  - query
+  - type
+  - has_dic
+  - corpus
+  - gran
+  - hdfs_path
+logger_file: ''
