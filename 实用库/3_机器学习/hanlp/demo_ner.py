@@ -5,7 +5,6 @@
   @FileName     : demo_ner.py
   @Description  : Placeholder
 """
-
 import hanlp
 
 recognizer = hanlp.load(hanlp.pretrained.ner.MSRA_NER_ALBERT_BASE_ZH)
