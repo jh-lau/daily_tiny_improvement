@@ -19,7 +19,6 @@ class LR(t.nn.Module):
     def forward(self, x):
         x = self.features(x)
         x = self.sigmoid(x)
-
         return x
 
 
