@@ -5,15 +5,10 @@
   @FileName     : main.py
   @Description  : Placeholder
 """
-import numpy as np
-import torch
-from torch import nn
-import torch.nn.functional as F
-import math, copy, time
-from src.transformer import subsequent_mask
-from torch.autograd import Variable
 import matplotlib.pyplot as plt
 import seaborn
+from src.transformer import subsequent_mask
+
 seaborn.set_context(context='talk')
 
 
