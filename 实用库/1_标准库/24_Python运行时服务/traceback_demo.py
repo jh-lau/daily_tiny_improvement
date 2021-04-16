@@ -12,8 +12,6 @@ import datetime
 
 
 def watcher(fn):
-    """A decorator to fn/processes that gives a logger and logs exceptions."""
-
     @functools.wraps(fn)
     def _watcher(*args, **kwargs):
         """Wrap the decorated function."""
