@@ -3,7 +3,7 @@
   @Date         : 21/2/24 14:35
   @Project      : DailyTinyImprovement
   @FileName     : traceback_demo.py
-  @Description  : Placeholder
+  @Description  :
 """
 import functools
 import traceback
