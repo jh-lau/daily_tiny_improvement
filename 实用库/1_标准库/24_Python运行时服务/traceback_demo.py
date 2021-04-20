@@ -34,7 +34,7 @@ def watcher(fn):
     return _watcher
 
 
-# @watcher
+@watcher
 def func3():
     try:
         func2()
