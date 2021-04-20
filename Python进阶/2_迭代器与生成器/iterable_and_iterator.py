@@ -38,6 +38,9 @@ class Torch:
     def __iter__(self):
         return iter(self._modules.values())
 
+    def __next__(self):
+        return next(self)
+
     def forward(self, _input):
         # 借鉴写法
         for module in self:
@@ -46,6 +49,6 @@ class Torch:
 
 
 if __name__ == '__main__':
-    for i in [A(), B(), C(), D()]:
+    for i in [A(), B(), C(), D(), Torch()]:
         print(i, 'is Iterable: ', isinstance(i, Iterable))
-        print(i, 'is Iterator: ', isinstance(i, Iterator))
+        print(i, 'is Iterator: ', isinstance(i, Iterator), '\n')
