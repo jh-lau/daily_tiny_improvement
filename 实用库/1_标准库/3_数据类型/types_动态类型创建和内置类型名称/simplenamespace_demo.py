@@ -5,6 +5,7 @@
   @FileName     : simplenamespace_demo.py
   @Description  : Placeholder
 """
+import json
 from types import SimpleNamespace as SN
 from collections import abc
 
@@ -37,3 +38,6 @@ if __name__ == '__main__':
     res = dot_dict(d)
     print(res)
     print(res.child.child.name, res.child.child.age)
+    ds = json.dumps(d)
+    nd = json.loads(ds, object_hook=lambda d: SN(**d))
+    print(nd.child, nd.child.name, nd.child.child.name)
