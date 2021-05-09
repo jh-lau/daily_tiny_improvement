@@ -3,7 +3,7 @@
   @Date         : 2021/1/22 11:24
   @Project      : DailyTinyImprovement
   @FileName     : server.py
-  @Description  : Placeholder
+  @Description  :
 """
 import random
 

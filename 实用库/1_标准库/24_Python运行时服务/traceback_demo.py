@@ -3,12 +3,10 @@
   @Date         : 21/2/24 14:35
   @Project      : DailyTinyImprovement
   @FileName     : traceback_demo.py
-  @Description  : Placeholder
+  @Description  :
 """
 import functools
-import os
 import traceback
-import datetime
 
 
 def watcher(fn):
@@ -34,7 +32,7 @@ def watcher(fn):
     return _watcher
 
 
-# @watcher
+@watcher
 def func3():
     try:
         func2()
