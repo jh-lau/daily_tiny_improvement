@@ -45,7 +45,8 @@ class NewT:
     name = NameDes('joey')
 
     def __init__(self, name):
-        self.name = name
+        # self.name = name
+        pass
 
 
 if __name__ == '__main__':
