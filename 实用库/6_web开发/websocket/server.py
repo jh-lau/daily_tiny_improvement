@@ -13,6 +13,7 @@ import websockets
 response = {
     "intent": "setup",
     "type": "sdk",
+    "count": 0,
     "class": {
         "package": "gfootball.env",
         "method": {
@@ -27,8 +28,11 @@ response = {
 }
 
 
-async def echo(websocket):
-    await websocket.send(json.dumps(response))
+async def echo(websocket, path):
+    async for message in websocket:
+        print(f"Receiving: {message}")
+        response['count'] += 1
+        await websocket.send(json.dumps(response))
 
 
 if __name__ == '__main__':

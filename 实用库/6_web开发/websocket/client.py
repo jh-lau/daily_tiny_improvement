@@ -13,8 +13,7 @@ def on_message(wsapp, message):
 
 
 if __name__ == '__main__':
-    ws = websocket.WebSocket()
-    ws.connect("ws://echo.websocket.org")
-    ws.send("Hello, Servera")
-    print(ws.recv())
-    ws.close()
+    sock = websocket.create_connection('ws://localhost:8765')
+    while True:
+        sock.send('start')
+        print(sock.recv())
