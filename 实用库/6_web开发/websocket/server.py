@@ -16,7 +16,7 @@ response1 = {"intent": "setup", "count": 0,"module": "env_sdk.gfootball_sdk","sd
 async def echo(websocket, path):
     async for message in websocket:
         print(f"Receiving: {message}")
-        response['count'] += 1
+        # response['count'] += 1
         response = input('->')
         print(json.dumps(response))
         await websocket.send(json.dumps(response))
