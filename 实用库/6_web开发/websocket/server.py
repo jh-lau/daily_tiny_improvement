@@ -10,28 +10,15 @@ import json
 
 import websockets
 
-response = {
-    "intent": "setup",
-    "type": "sdk",
-    "count": 0,
-    "class": {
-        "package": "gfootball.env",
-        "method": {
-            "name": "create_environment",
-            "kwargs": {
-                "env_name": "academy_empty_goal_close",
-                "render": False,
-                "representation": "simple115"
-            }
-        }
-    }
-}
+response1 = {"intent": "setup", "count": 0,"module": "env_sdk.gfootball_sdk","sdk": "GfootballSDK"}
 
 
 async def echo(websocket, path):
     async for message in websocket:
         print(f"Receiving: {message}")
-        response['count'] += 1
+        # response['count'] += 1
+        response = input('->')
+        print(json.dumps(response))
         await websocket.send(json.dumps(response))
 
 
