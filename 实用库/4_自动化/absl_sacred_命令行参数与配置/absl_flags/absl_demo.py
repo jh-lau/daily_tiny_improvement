@@ -11,7 +11,7 @@ from absl import flags, logging
 FLAGS = flags.FLAGS
 
 flags.DEFINE_string('name', None, 'Your name.')
-flags.DEFINE_integer('num_times', 11, 'Number of times to print greeting.')
+flags.DEFINE_integer('num_times', 111, 'Number of times to print greeting.')
 
 flags.mark_flag_as_required('name')
 
