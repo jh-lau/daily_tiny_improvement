@@ -10,7 +10,10 @@ import json
 
 import websockets
 
-response1 = {"intent": "setup", "count": 0,"module": "env_sdk.gfootball_sdk","sdk": "GfootballSDK"}
+intent1 = {"intent": "setup", "module": "env_sdk.gfootball_sdk","sdk": "GfootballSDK"}
+intent2 = {"intent": "launch"}
+intent3 = {"intent": "step"}
+intent4 = {"intent": "close"}
 
 
 async def echo(websocket, path):
