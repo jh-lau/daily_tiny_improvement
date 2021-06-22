@@ -163,7 +163,6 @@ class CustomMetricsCallback(keras.callbacks.Callback):
         )
         self.classification_report()
 
-
 def run_experiment(model):
     model.compile(
         optimizer=keras.optimizers.Adam(learning_rate=learning_rate),
