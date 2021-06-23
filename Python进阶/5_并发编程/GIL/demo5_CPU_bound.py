@@ -30,7 +30,7 @@ def prime(num):
 
 if __name__ == '__main__':
     # 1.单进程单线程
-    start = 10000
+    start = 100000
     t1 = time.time()
     for i in range(4):
         print(prime(i + start))
@@ -75,7 +75,7 @@ if __name__ == '__main__':
 
     # 5.进程池另一种写法
     t5 = time.time()
-    with futures.ProcessPoolExecutor() as pool:
+    with futures.ProcessPoolExecutor(max_workers=4) as pool:
         temp = pool.map(prime, range(start, start+4))
     print(f"Pool time cost: {time.time() - t5: .3f} seconds")
     "Pool time cost:  10.483 seconds"

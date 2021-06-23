@@ -3,7 +3,7 @@
   @Date         : 2020/10/29 10:51
   @Project      : DailyTinyImprovement
   @FileName     : 判断是否在字典内的效率对比.py
-  @Description  : Placeholder
+  @Description  : 使用dict.keys()判定速度变慢1倍，直接判定是否在字典即可
 """
 from random import choice
 from time import time
@@ -12,7 +12,7 @@ dic = {choice(range(20000)): k for k in range(1000)}
 
 if __name__ == '__main__':
     key = choice(range(20000))
-    num = int(1e7)
+    num = int(1e8)
     t1 = time()
     for _ in range(num):
         if key in dic:
