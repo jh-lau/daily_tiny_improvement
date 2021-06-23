@@ -10,21 +10,6 @@ import os
 from datetime import datetime
 
 
-def set_logger(logger_name: str, save_file: str, logging_level: str = logging.INFO):
-    logger = logging.getLogger(logger_name)
-    logging.basicConfig(
-        format='%(asctime)s '
-               '%(levelname)s '
-               '[%(filename)s:%(lineno)d] '
-               ':  %(message)s',
-        filename=save_file,
-        filemode='w',
-    )
-    logger.setLevel(logging_level)
-
-    return logger
-
-
 def get_logger(log_name: str,
                file_path: str = '',
                file_level=logging.INFO,
