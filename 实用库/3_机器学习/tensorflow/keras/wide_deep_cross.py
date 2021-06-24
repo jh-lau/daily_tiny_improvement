@@ -49,9 +49,6 @@ def encode_inputs(inputs, use_embedding=False):
     for feature_name in inputs:
         if feature_name in CATEGORICAL_FEATURE_NAMES:
             vocabulary = CATEGORICAL_FEATURES_WITH_VOCABULARY[feature_name]
-            # Create a lookup to convert string values to an integer indices.
-            # Since we are not using a mask token nor expecting any out of vocabulary
-            # (oov) token, we set mask_token to None and  num_oov_indices to 0.
             lookup = layers.experimental.preprocessing.StringLookup(
                 vocabulary=vocabulary,
                 mask_token=None,
