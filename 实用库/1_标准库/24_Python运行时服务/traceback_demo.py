@@ -12,7 +12,6 @@ import traceback
 def watcher(fn):
     @functools.wraps(fn)
     def _watcher(*args, **kwargs):
-        """Wrap the decorated function."""
         name = fn.__name__
         print(f"{name} started")
         try:

@@ -27,4 +27,4 @@ if __name__ == '__main__':
             results = list(tqdm(executor.map(sleep, range(100)), total=100))
     elif flag == 3:
         with futures.ProcessPoolExecutor(max_workers=8) as executor:
-            results = list(tqdm(executor.map(sleep, range(100)), total=100))
+            list(tqdm(executor.map(sleep, range(100)), total=100))
