@@ -56,7 +56,6 @@ def encode_inputs(inputs, use_embedding=False):
                 output_mode="int" if use_embedding else "binary",
             )
             if use_embedding:
-                # Convert the string input values into integer indices.
                 encoded_feature = lookup(inputs[feature_name])
                 embedding_dims = int(math.sqrt(len(vocabulary)))
                 # Create an embedding layer with the specified dimensions.
