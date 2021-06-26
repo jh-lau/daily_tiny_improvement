@@ -58,7 +58,6 @@ def encode_inputs(inputs, use_embedding=False):
             if use_embedding:
                 encoded_feature = lookup(inputs[feature_name])
                 embedding_dims = int(math.sqrt(len(vocabulary)))
-                # Create an embedding layer with the specified dimensions.
                 embedding = layers.Embedding(
                     input_dim=len(vocabulary), output_dim=embedding_dims
                 )
