@@ -61,7 +61,6 @@ def encode_inputs(inputs, use_embedding=False):
                 embedding = layers.Embedding(
                     input_dim=len(vocabulary), output_dim=embedding_dims
                 )
-                # Convert the index values to embedding representations.
                 encoded_feature = embedding(encoded_feature)
             else:
                 # Convert the string input values into a one hot encoding.
