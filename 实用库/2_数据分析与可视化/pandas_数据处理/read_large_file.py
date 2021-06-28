@@ -6,6 +6,8 @@
   @Description  : Placeholder
 """
 import pandas as pd
+import matplotlib.pyplot as plt
+plt.show()
 pd.set_option('display.max_columns', None)
 
 if __name__ == '__main__':
@@ -23,4 +25,15 @@ if __name__ == '__main__':
     df.columns = ['id', 'birthday', 'height', 'weight', 'province', 'city',
                   'is_marr', 'is_gest', 'ment_cycle', 'period_start_date',
                   'records', 'all_ment', 'all_dur', 'avg_ment', 'avg_dur']
+
+    # get age
+    df.birthday.fillna('1995-01-01', inplace=True)
+    df.birthday = df.birthday.apply(lambda x: pd.to_datetime(x))
+    df['age'] = pd.Timestamp.now() - df.birthday
+    df.age = df.age.apply(lambda x: round(x.days/365))
+
+    # set int
+    df.is_marr.astype(int)
+    df.is_gest.astype(int)
+
     print(df.head(5))

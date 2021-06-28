@@ -11,6 +11,7 @@ from argparse import Namespace as N
 
 if __name__ == '__main__':
     d = {'name': 'gary', 'gender': 'male', 'age': 40,
-         'child': {'name': 'josy', 'age': 123, 'child': {'name': 'chand', 'age': 2}}}
+         'child': [{'name': 'josy', 'age': 123, 'child': {'name': 'chand', 'age': 2}},
+                   {'name': 'josy', 'age': 123, 'child': {'name': 'chand', 'age': 2}}]}
     nd = json.loads(json.dumps(d), object_hook=lambda d: N(**d))
-    print(nd.child, nd.child.name, nd.child.child.name)
+    print(nd.child, nd.child[0].name, nd.child[0].child.name)
