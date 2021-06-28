@@ -63,7 +63,6 @@ def encode_inputs(inputs, use_embedding=False):
                 )
                 encoded_feature = embedding(encoded_feature)
             else:
-                # Convert the string input values into a one hot encoding.
                 encoded_feature = lookup(tf.expand_dims(inputs[feature_name], -1))
         else:
             # Use the numerical features as-is.
