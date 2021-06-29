@@ -65,7 +65,6 @@ def encode_inputs(inputs, use_embedding=False):
             else:
                 encoded_feature = lookup(tf.expand_dims(inputs[feature_name], -1))
         else:
-            # Use the numerical features as-is.
             encoded_feature = tf.expand_dims(inputs[feature_name], -1)
 
         encoded_features.append(encoded_feature)
