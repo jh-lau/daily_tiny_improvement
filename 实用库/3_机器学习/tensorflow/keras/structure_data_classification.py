@@ -3,7 +3,7 @@
   @Date         : 21/6/29 21:51
   @Project      : DailyTinyImprovement
   @FileName     : structure_data_classification.py
-  @Description  : Placeholder
+  @Description  :
 """
 import pandas as pd
 import tensorflow as tf
