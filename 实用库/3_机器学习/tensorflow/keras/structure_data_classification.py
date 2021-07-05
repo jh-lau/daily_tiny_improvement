@@ -41,7 +41,7 @@ def encode_categorical_feature(feature, name, dataset, is_string):
 
 
 if __name__ == '__main__':
-    file_url = "heart.csv"
+    file_url = "data/heart.csv"
     df = pd.read_csv(file_url)
     val_df = df.sample(frac=.2, random_state=1337)
     train_df = df.drop(val_df.index)

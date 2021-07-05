@@ -6,10 +6,12 @@
   @Description  : Placeholder
 """
 import math
+import time
 
 import numpy as np
 import pandas as pd
 import tensorflow as tf
+from sklearn.metrics import classification_report
 from tensorflow import keras
 from tensorflow.keras import layers
 
@@ -136,43 +138,53 @@ def create_deep_and_cross_model():
     return model
 
 
+class CustomMetricsCallback(keras.callbacks.Callback):
+    def __init__(self, valid_test_data):
+        super().__init__()
+        self.dataset = valid_test_data
+
+    def classification_report(self):
+        y_true = []
+        y_pred = []
+        t1 = time.time()
+        for i, (data, label) in enumerate(self.dataset):
+            y_pred.extend(np.argmax(self.model.predict(data), -1))
+            y_true.extend(label.numpy().tolist())
+        print(classification_report(y_true, y_pred, zero_division=0, digits=4))
+        print(f'评估耗时：{time.time() - t1: .3f} 秒')
+        return
+
+    def on_test_end(self, epoch, logs=None):
+        self.classification_report()
+
+    def on_epoch_end(self, epoch, logs=None):
+        self.classification_report()
+
+
 def run_experiment(model):
     model.compile(
         optimizer=keras.optimizers.Adam(learning_rate=learning_rate),
         loss=keras.losses.SparseCategoricalCrossentropy(),
         metrics=[keras.metrics.SparseCategoricalAccuracy()],
     )
-
     train_dataset = get_dataset_from_csv(train_data_file, batch_size, shuffle=True)
 
-    test_dataset = get_dataset_from_csv(test_data_file, batch_size)
+    eval_dataset = get_dataset_from_csv(eval_data_file, batch_size + 1280)
+    test_dataset = get_dataset_from_csv(test_data_file, batch_size + 1280)
+    eval_metric_callback = CustomMetricsCallback(eval_dataset)
+    test_metric_callback = CustomMetricsCallback(test_dataset)
 
     print("Start training the model...")
-    history = model.fit(train_dataset, epochs=num_epochs)
+    model.fit(train_dataset, epochs=num_epochs, callbacks=[eval_metric_callback])
+    # model.fit(train_dataset, epochs=num_epochs)
     print("Model training finished")
 
-    _, accuracy = model.evaluate(test_dataset, verbose=0)
+    _, accuracy = model.evaluate(test_dataset, verbose=0, callbacks=[test_metric_callback])
 
     print(f"Test accuracy: {round(accuracy * 100, 2)}%")
 
 
 if __name__ == '__main__':
-    data_path = 'data/covtype_data.csv'
-    train_data_file = 'data/covype_trian.csv'
-    test_data_file = 'data/covtype_test.csv'
-    raw_data = pd.read_csv(data_path, header=None)
-    print(f"dataset shape: {raw_data.shape}")
-
-    soil_type_values = [f"soil_type_{idx + 1}" for idx in range(40)]
-    wilderness_area_values = [f"area_type_{idx + 1}" for idx in range(4)]
-
-    soil_type = raw_data.loc[:, 14:53].apply(
-        lambda x: soil_type_values[0::1][x.to_numpy().nonzero()[0][0]], axis=1
-    )
-    wilderness_area = raw_data.loc[:, 10:13].apply(
-        lambda x: wilderness_area_values[0::1][x.to_numpy().nonzero()[0][0]], axis=1
-    )
-
     CSV_HEADER = [
         "Elevation",
         "Aspect",
@@ -188,39 +200,49 @@ if __name__ == '__main__':
         "Soil_Type",
         "Cover_Type",
     ]
+    data = pd.read_csv('data/covtype_data/train/covtype_train.csv')
+    train_data_file = tf.io.gfile.glob('data/covtype_data/train/*.csv')
+    eval_data_file = tf.io.gfile.glob('data/covtype_data/eval/*.csv')
+    test_data_file = tf.io.gfile.glob('data/covtype_data/test/*.csv')
 
-    data = pd.concat(
-        [raw_data.loc[:, 0:9], wilderness_area, soil_type, raw_data.loc[:, 54]],
-        axis=1,
-        ignore_index=True,
-    )
-    data.columns = CSV_HEADER
-
-    # Convert the target label indices into a range from 0 to 6 (there are 7 labels in total).
-    data["Cover_Type"] = data["Cover_Type"] - 1
-
-    print(f"Dataset shape: {data.shape}")
-    train_splits = []
-    test_splits = []
-
-    # 从每种类型中抽取部分保证分布的一致性
-    for _, group_data in data.groupby("Cover_Type"):
-        random_selection = np.random.rand(len(group_data.index)) <= 0.85
-        train_splits.append(group_data[random_selection])
-        test_splits.append(group_data[~random_selection])
-
-    train_data = pd.concat(train_splits).sample(frac=1).reset_index(drop=True)
-    test_data = pd.concat(test_splits).sample(frac=1).reset_index(drop=True)
-
-    print(f"Train split size: {len(train_data.index)}")
-    print(f"Test split size: {len(test_data.index)}")
-    train_data.to_csv(train_data_file, index=False)
-    test_data.to_csv(test_data_file, index=False)
+    # data_path = 'data/covtype_data.csv'
+    # train_data_file = 'data/covtype_train.csv'
+    # test_data_file = 'data/covtype_eval.csv'
+    # raw_data = pd.read_csv(data_path, header=None)
+    # print(f"dataset shape: {raw_data.shape}")
+    # soil_type_values = [f"soil_type_{idx + 1}" for idx in range(40)]
+    # wilderness_area_values = [f"area_type_{idx + 1}" for idx in range(4)]
+    # soil_type = raw_data.loc[:, 14:53].apply(
+    #     lambda x: soil_type_values[0::1][x.to_numpy().nonzero()[0][0]], axis=1
+    # )
+    # wilderness_area = raw_data.loc[:, 10:13].apply(
+    #     lambda x: wilderness_area_values[0::1][x.to_numpy().nonzero()[0][0]], axis=1
+    # )
+    # data = pd.concat(
+    #     [raw_data.loc[:, 0:9], wilderness_area, soil_type, raw_data.loc[:, 54]],
+    #     axis=1,
+    #     ignore_index=True,
+    # )
+    # data.columns = CSV_HEADER
+    # # Convert the target label indices into a range from 0 to 6 (there are 7 labels in total).
+    # data["Cover_Type"] = data["Cover_Type"] - 1
+    # print(f"Dataset shape: {data.shape}")
+    # train_splits = []
+    # test_splits = []
+    # # 从每种类型中抽取部分保证分布的一致性
+    # for _, group_data in data.groupby("Cover_Type"):
+    #     random_selection = np.random.rand(len(group_data.index)) <= 0.85
+    #     train_splits.append(group_data[random_selection])
+    #
+    # train_data = pd.concat(train_splits).sample(frac=1).reset_index(drop=True)
+    # test_data = pd.concat(test_splits).sample(frac=1).reset_index(drop=True)
+    # print(f"Train split size: {len(train_data.index)}")
+    # print(f"Test split size: {len(test_data.index)}")
+    # train_data.to_csv(train_data_file, index=False)
+    # test_data.to_csv(test_data_file, index=False)
 
     TARGET_FEATURE_NAME = "Cover_Type"
-
     TARGET_FEATURE_LABELS = ["0", "1", "2", "3", "4", "5", "6"]
-
     NUMERIC_FEATURE_NAMES = [
         "Aspect",
         "Elevation",
@@ -252,7 +274,7 @@ if __name__ == '__main__':
     learning_rate = 0.001
     dropout_rate = 0.1
     batch_size = 265
-    num_epochs = 50
+    num_epochs = 2
 
     hidden_units = [32, 32]
     flag = 1
