@@ -200,10 +200,10 @@ if __name__ == '__main__':
         "Soil_Type",
         "Cover_Type",
     ]
-    data = pd.read_csv('data/covtype_data/train/covtype_train.csv')
-    train_data_file = tf.io.gfile.glob('data/covtype_data/train/*.csv')
+    data = pd.read_csv('data/covtype_data/eval/covtype_eval.csv')
+    train_data_file = tf.io.gfile.glob('data/covtype_data/eval/*.csv')
     eval_data_file = tf.io.gfile.glob('data/covtype_data/eval/*.csv')
-    test_data_file = tf.io.gfile.glob('data/covtype_data/test/*.csv')
+    test_data_file = tf.io.gfile.glob('data/covtype_data/eval/*.csv')
 
     # data_path = 'data/covtype_data.csv'
     # train_data_file = 'data/covtype_train.csv'
@@ -277,7 +277,7 @@ if __name__ == '__main__':
     num_epochs = 2
 
     hidden_units = [32, 32]
-    flag = 1
+    flag = 3
     if flag == 1:
         baseline_model = create_baseline_model()
         # keras.utils.plot_model(baseline_model, show_shapes=True, rankdir="LR")
@@ -288,5 +288,6 @@ if __name__ == '__main__':
         run_experiment(wide_and_deep_model)
     elif flag == 3:
         deep_and_cross_model = create_deep_and_cross_model()
+        tf.keras.utils.plot_model(deep_and_cross_model)
         # keras.utils.plot_model(deep_and_cross_model, show_shapes=True, rankdir="LR")
-        run_experiment(deep_and_cross_model)
+        # run_experiment(deep_and_cross_model)

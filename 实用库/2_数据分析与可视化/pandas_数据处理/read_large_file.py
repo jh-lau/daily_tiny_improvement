@@ -10,6 +10,12 @@ import matplotlib.pyplot as plt
 plt.show()
 pd.set_option('display.max_columns', None)
 
+
+def str_to_int_list(data):
+    data = data.split(',')
+    data = [int(s) for s in data if s.strip()]
+    return data
+
 if __name__ == '__main__':
     source = r'D:\Projects\basic-user-menstrual-predict\data\dataset\20210622_diary_menst_user_info___c8a2dd2d_6700_44ce_9655_ef76a9d2ef5b'
     target = r'D:\Projects\basic-user-menstrual-predict\data\dataset\source\20210623_diary_menst_user_info___c8a2dd2d_6700_44ce_9655_ef76a9d2ef5b'
