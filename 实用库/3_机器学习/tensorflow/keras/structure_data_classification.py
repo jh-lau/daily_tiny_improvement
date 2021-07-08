@@ -61,7 +61,6 @@ if __name__ == '__main__':
     # Categorical feature encoded as string
     thal = keras.Input(shape=(1,), name="thal", dtype="string")
 
-    # Numerical features
     age = keras.Input(shape=(1,), name="age")
     trestbps = keras.Input(shape=(1,), name="trestbps")
     chol = keras.Input(shape=(1,), name="chol")
