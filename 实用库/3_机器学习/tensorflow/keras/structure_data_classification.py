@@ -50,7 +50,6 @@ if __name__ == '__main__':
     train_ds = train_ds.batch(32)
     val_ds = val_ds.batch(32)
 
-    # Categorical features encoded as integers
     sex = keras.Input(shape=(1,), name="sex", dtype="int64")
     cp = keras.Input(shape=(1,), name="cp", dtype="int64")
     fbs = keras.Input(shape=(1,), name="fbs", dtype="int64")
