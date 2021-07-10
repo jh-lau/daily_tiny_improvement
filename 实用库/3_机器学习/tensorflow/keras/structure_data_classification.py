@@ -57,7 +57,6 @@ if __name__ == '__main__':
     exang = keras.Input(shape=(1,), name="exang", dtype="int64")
     ca = keras.Input(shape=(1,), name="ca", dtype="int64")
 
-    # Categorical feature encoded as string
     thal = keras.Input(shape=(1,), name="thal", dtype="string")
 
     age = keras.Input(shape=(1,), name="age")
