@@ -8,7 +8,7 @@
 import multiprocessing
 
 
-def setcallback(x):
+def set_callback(x):
     with open('result.csv', 'a+') as f:
         f.writelines(f"{x}\n")
 
