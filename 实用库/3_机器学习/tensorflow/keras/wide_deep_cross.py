@@ -158,6 +158,9 @@ class CustomMetricsCallback(keras.callbacks.Callback):
         self.classification_report()
 
     def on_epoch_end(self, epoch, logs=None):
+        print(
+            epoch
+        )
         self.classification_report()
 
 
