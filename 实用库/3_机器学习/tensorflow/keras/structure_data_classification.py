@@ -93,7 +93,6 @@ if __name__ == '__main__':
     # String categorical features
     thal_encoded = encode_categorical_feature(thal, "thal", train_ds, True)
 
-    # Numerical features
     age_encoded = encode_numerical_feature(age, "age", train_ds)
     trestbps_encoded = encode_numerical_feature(trestbps, "trestbps", train_ds)
     chol_encoded = encode_numerical_feature(chol, "chol", train_ds)
