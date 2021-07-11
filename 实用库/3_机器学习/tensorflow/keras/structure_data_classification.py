@@ -10,7 +10,7 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.layers.experimental.preprocessing import IntegerLookup, Normalization, StringLookup
-
+tf.data.Dataset.from_tensor_slices()
 
 def dataframe_to_dataset(dataframe):
     dataframe = dataframe.copy()
