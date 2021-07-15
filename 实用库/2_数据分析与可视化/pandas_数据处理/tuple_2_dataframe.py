@@ -3,7 +3,7 @@
   @Date         : 21/7/11 23:07
   @Project      : DailyTinyImprovement
   @FileName     : tuple_2_dataframe.py
-  @Description  : palceholder
+  @Description  : placeholder
 """
 
 import pandas as pd
