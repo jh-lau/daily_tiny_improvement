@@ -5,7 +5,6 @@
   @FileName     : tuple_2_dataframe.py
   @Description  : placeholder
 """
-
 import pandas as pd
 
 if __name__ == '__main__':
