@@ -19,4 +19,4 @@ if __name__ == '__main__':
     lstm = layers.LSTM(16)
     outputs = lstm(x)
     model = Model(inputs=inputs, outputs=outputs)
-    plot_model(model, to_file='vec.png', show_shapes=True)
+    # plot_model(model, to_file='vec.png', show_shapes=True)
