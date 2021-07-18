@@ -10,3 +10,4 @@ downloaded_flags/
 build/
 tensorboard_log
 models/
+*.csv
