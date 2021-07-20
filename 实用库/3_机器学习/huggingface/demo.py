@@ -6,6 +6,8 @@
   @Description  : Placeholder
 """
 from transformers import BertTokenizer, BertModel, pipeline
+import os
+os.environ['USE_TF'] = True
 
 if __name__ == '__main__':
     print('Start loading...')
