@@ -11,4 +11,6 @@ pd.set_option('expand_frame_repr', False)
 pd.set_option('display.max_columns', None)
 
 if __name__ == '__main__':
-    pass
+    df = pd.read_csv('file_path', names=['a', 'b', 'c'])
+    df = df.astype({'a': int, 'b': float})
+    df.to_csv('file_path', index=False, header=False)
