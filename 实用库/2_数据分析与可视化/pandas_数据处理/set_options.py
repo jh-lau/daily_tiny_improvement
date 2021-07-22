@@ -13,4 +13,6 @@ pd.set_option('display.max_columns', None)
 if __name__ == '__main__':
     df = pd.read_csv('file_path', names=['a', 'b', 'c'])
     df = df.astype({'a': int, 'b': float})
+    # calculate not non value
+    df.a.notna().sum()
     df.to_csv('file_path', index=False, header=False)
