@@ -6,7 +6,6 @@
   @Description  : Placeholder
 """
 import tensorflow as tf
-tf.keras.layers.experimental.preprocessing.TextVectorization
 
 if __name__ == '__main__':
     filepath_dataset = tf.data.Dataset.list_files('data/covtype_data')
