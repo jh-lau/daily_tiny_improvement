@@ -3,7 +3,7 @@
   @Date         : 21/7/15 22:09
   @Project      : DailyTinyImprovement
   @FileName     : demo.py
-  @Description  :
+  @Description  : placeholder
 """
 import tensorflow as tf
 
