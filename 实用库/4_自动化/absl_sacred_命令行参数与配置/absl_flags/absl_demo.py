@@ -3,7 +3,7 @@
   @Date         : 21/1/8 23:40
   @Project      : DailyTinyImprovement
   @FileName     : absl_demo.py
-  @Description  : Placeholder
+  @Description  :
 """
 from absl import app
 from absl import flags, logging
