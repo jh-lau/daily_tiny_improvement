@@ -17,4 +17,9 @@ if __name__ == '__main__':
     df.isnull.sum()
     df.nunique()  # 统计不同值的数量
     label_freq = df.a.value_counts() / len(df)
+    df.reset_index(drop=True, replace=True)
+
+    # to category
+    pd.get_dummies('data')
+    df = df.content.astype('category').a.codes
 
