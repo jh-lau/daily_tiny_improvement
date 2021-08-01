@@ -14,12 +14,28 @@ from tensorflow.keras import layers
 from tensorflow.keras import backend as K
 
 
+# 自定义损失函数1, tf version
 def my_crossentropy(y_true, y_pred, e=0.1):
-    # y_true = y_true.reshape(-1, 1)
+    loss1 = tf.losses.sparse_categorical_crossentropy(y_true, y_pred, from_logits=True)
+    y_pred_label = tf.argmax(y_pred, axis=-1)
+    weight = tf.cast((y_pred_label - y_true), tf.float32)
+    weight = tf.abs(weight) + 1.
+    loss1 *= weight
+
+    # loss1 = K.sum(loss1) / 64
+    loss1 = tf.math.reduce_mean(loss1)
+    return loss1
+
+
+def my_crossentropy_keras_version(y_true, y_pred, e=0.1):
     loss1 = K.sparse_categorical_crossentropy(y_true, y_pred, from_logits=True)
-    loss1 = K.sum(loss1) / 64
-    # loss2 = K.categorical_crossentropy(K.ones_like(y_pred)/10, y_pred, from_logits=True)
-    # return (1-e)*loss1 + e*loss2
+    y_pred_label = K.argmax(y_pred, axis=-1)
+    weight = K.cast((y_pred_label - y_true), tf.float32)
+    weight = K.abs(weight) + 1.
+    loss1 *= weight
+
+    # loss1 = K.sum(loss1) / 64
+    loss1 = tf.math.reduce_mean(loss1)
     return loss1
 
 
@@ -57,6 +73,8 @@ if __name__ == '__main__':
     (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
     x_train = np.reshape(x_train, (-1, 784))
     x_test = np.reshape(x_test, (-1, 784))
+    y_train = tf.cast(y_train, tf.int64)
+    y_test = tf.cast(y_test, tf.int64)
     train_dataset = tf.data.Dataset.from_tensor_slices((x_train, y_train))
     train_dataset = train_dataset.shuffle(buffer_size=1924).batch(batch_size)
 

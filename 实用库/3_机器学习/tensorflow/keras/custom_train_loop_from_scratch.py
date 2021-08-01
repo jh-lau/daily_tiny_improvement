@@ -21,8 +21,6 @@ def my_crossentropy(y_true, y_pred, e=0.1):
     weight = K.abs(weight) + 1.
     loss1 *= weight
     loss1 = K.sum(loss1) / 64
-    # loss2 = K.categorical_crossentropy(K.ones_like(y_pred)/10, y_pred, from_logits=True)
-    # return (1-e)*loss1 + e*loss2
     return loss1
 
 
