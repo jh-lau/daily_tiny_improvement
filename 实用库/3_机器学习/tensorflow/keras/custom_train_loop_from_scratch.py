@@ -11,6 +11,20 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
+from tensorflow.keras import backend as K
+
+
+def my_crossentropy(y_true, y_pred, e=0.1):
+    loss1 = K.sparse_categorical_crossentropy(y_true, y_pred, from_logits=True)
+    y_pred_label = K.argmax(y_pred, axis=-1)
+    weight = K.cast((y_pred_label - y_true), tf.float32)
+    weight = K.abs(weight) + 1.
+    loss1 *= weight
+    loss1 = K.sum(loss1) / 64
+    # loss2 = K.categorical_crossentropy(K.ones_like(y_pred)/10, y_pred, from_logits=True)
+    # return (1-e)*loss1 + e*loss2
+    return loss1
+
 
 if __name__ == '__main__':
     inputs = keras.Input(shape=(784,), name='digits')
@@ -20,12 +34,15 @@ if __name__ == '__main__':
     model = keras.Model(inputs, outputs)
 
     optimizer = keras.optimizers.SGD(learning_rate=1e-3)
-    loss_fn = keras.losses.SparseCategoricalCrossentropy(from_logits=True)
+    # loss_fn = keras.losses.SparseCategoricalCrossentropy(from_logits=True)
+    loss_fn = my_crossentropy
     train_acc_metric = keras.metrics.SparseCategoricalAccuracy()
     val_acc_metric = keras.metrics.SparseCategoricalAccuracy()
 
     batch_size = 64
     (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+    y_train = K.cast(y_train, tf.int64)
+    y_test = K.cast(y_test, tf.int64)
     x_train = np.reshape(x_train, (-1, 784))
     x_test = np.reshape(x_test, (-1, 784))
     train_dataset = tf.data.Dataset.from_tensor_slices((x_train, y_train))

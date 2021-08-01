@@ -15,7 +15,9 @@ from tensorflow.keras import backend as K
 
 
 def my_crossentropy(y_true, y_pred, e=0.1):
-    loss1 = K.categorical_crossentropy(y_true, y_pred, from_logits=True)
+    # y_true = y_true.reshape(-1, 1)
+    loss1 = K.sparse_categorical_crossentropy(y_true, y_pred, from_logits=True)
+    loss1 = K.sum(loss1) / 64
     # loss2 = K.categorical_crossentropy(K.ones_like(y_pred)/10, y_pred, from_logits=True)
     # return (1-e)*loss1 + e*loss2
     return loss1
@@ -74,7 +76,7 @@ if __name__ == '__main__':
 
             if step % 200 == 0:
                 print(
-                    f"Training loss (for one batch) at step {step}: {loss_value: .4f}"
+                    f"Training loss (for one batch) at step {step}: {float(loss_value): .4f}"
                 )
                 print(f"Seen so far: {(step + 1) * 64} samples")
         train_acc = train_acc_metric.result()
