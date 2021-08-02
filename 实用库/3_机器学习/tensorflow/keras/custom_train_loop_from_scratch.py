@@ -3,7 +3,7 @@
   @Date         : 21/7/30 21:09
   @Project      : DailyTinyImprovement
   @FileName     : custom_train_loop_from_scratch.py
-  @Description  : Placeholder
+  @Description  :
 """
 import time
 
