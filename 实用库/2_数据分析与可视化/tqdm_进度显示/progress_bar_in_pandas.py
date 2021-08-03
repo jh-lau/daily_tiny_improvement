@@ -13,5 +13,5 @@ if __name__ == '__main__':
     tqdm.pandas()
     df = pd.DataFrame(np.random.randint(0, int(1e8), (10000, 1000)))
     # Now you can use `progress_apply` instead of `apply`
-    df.groupby(0).apply(lambda x: x ** 2)
-    # df.groupby(0).progress_apply(lambda x: x ** 2)
+    # df.groupby(0).apply(lambda x: x ** 2)
+    df.groupby(0).progress_apply(lambda x: x ** 2)
