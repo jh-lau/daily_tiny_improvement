@@ -58,11 +58,16 @@ if __name__ == '__main__':
         start_time = time.time()
         for step, (x_batch_train, y_batch_train) in enumerate(train_dataset):
             with tf.GradientTape() as tape:
+                # 1. 前向计算
                 logits = model(x_batch_train, training=True)
+                # 2. 损失计算
                 loss_value = loss_fn(y_batch_train, logits)
 
+            # 3. 反向传播
             grads = tape.gradient(loss_value, model.trainable_weights)
+            # 4. 参数更新
             optimizer.apply_gradients(zip(grads, model.trainable_weights))
+            # 5. 指标更新
             train_acc_metric.update_state(y_batch_train, logits)
 
             if step % 200 == 0:
