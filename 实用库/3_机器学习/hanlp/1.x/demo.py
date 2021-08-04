@@ -19,7 +19,8 @@ if __name__ == '__main__':
         "欢迎新老师生前来就餐",
         "工信处女干事每月经过下属科室都要亲口交代24口交换机等技术性器件的安装工作",
         "随着页游兴起到现在的页游繁盛，依赖于存档进行逻辑判断的设计减少了，但这块也不能完全忽略掉。"]
-    for sentence in testCases: print(HanLP.segment(sentence))
+    for sentence in testCases:
+        print(HanLP.segment(sentence))
     # 关键词提取
     document = "水利部水资源司司长陈明忠9月29日在国务院新闻办举行的新闻发布会上透露，" \
                "根据刚刚完成了水资源管理制度的考核，有部分省接近了红线的指标，" \

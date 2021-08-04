@@ -7,6 +7,7 @@
 """
 # encoding=utf-8
 import jieba
+from pyhanlp import *
 
 
 if __name__ == '__main__':
@@ -17,13 +18,14 @@ if __name__ == '__main__':
           "小明硕士毕业于中国科学院计算所，后在日本京都大学深造",
           '阿婆主来到北京立方庭参观自然语义科技公司。',
           '华纳音乐旗下的新垣结衣在12月21日于日本武道馆举办歌手出道活动']
-    jieba.suggest_freq('台中', True)
-    jieba.suggest_freq('乒乓球拍', True)
-    jieba.suggest_freq(('中', '将'), True)
-    jieba.add_word('乒乓球拍', 31)
+    # jieba.suggest_freq('台中', True)
+    # jieba.suggest_freq('乒乓球拍', True)
+    # jieba.suggest_freq(('中', '将'), True)
+    # jieba.add_word('乒乓球拍', 31)
     for str in strs:
         seg_list = jieba.cut(str,use_paddle=True, HMM=False)  # 使用paddle模式
         print("Paddle Mode: " + '/'.join(list(seg_list)))
+        print("Hanlp Mode:", HanLP.segment(str))
 
         # seg_list = jieba.cut(str, cut_all=True, HMM=False)
         # print("Full Mode: " + "/ ".join(seg_list))  # 全模式
