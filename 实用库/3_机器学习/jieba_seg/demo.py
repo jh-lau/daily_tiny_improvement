@@ -8,6 +8,11 @@
 # encoding=utf-8
 import jieba
 from pyhanlp import *
+CustomDictionary = JClass("com.hankcs.hanlp.dictionary.CustomDictionary")
+StandardTokenizer = JClass("com.hankcs.hanlp.tokenizer.StandardTokenizer")
+# StandardTokenizer.SEGMENT.enableAllNamedEntityRecognize(True)
+# CustomDictionary.add("乒乓球拍")  # 动态增加
+# CustomDictionary.add("新垣结衣")  # 动态增加
 
 
 if __name__ == '__main__':
@@ -25,7 +30,7 @@ if __name__ == '__main__':
     for str in strs:
         seg_list = jieba.cut(str,use_paddle=True, HMM=False)  # 使用paddle模式
         print("Paddle Mode: " + '/'.join(list(seg_list)))
-        print("Hanlp Mode:", HanLP.segment(str))
+        print("Hanlp1.x Mode:", StandardTokenizer.segment(str))
 
         # seg_list = jieba.cut(str, cut_all=True, HMM=False)
         # print("Full Mode: " + "/ ".join(seg_list))  # 全模式
@@ -35,8 +40,8 @@ if __name__ == '__main__':
 
         print()
 
-    seg_list = jieba.cut("他来到了网易杭研大厦")  # 默认是精确模式
-    print(", ".join(seg_list))
-
-    seg_list = jieba.cut_for_search("小明硕士毕业于中国科学院计算所，后在日本京都大学深造")  # 搜索引擎模式
-    print(", ".join(seg_list))
+    # seg_list = jieba.cut("他来到了网易杭研大厦")  # 默认是精确模式
+    # print(", ".join(seg_list))
+    #
+    # seg_list = jieba.cut_for_search("小明硕士毕业于中国科学院计算所，后在日本京都大学深造")  # 搜索引擎模式
+    # print(", ".join(seg_list))
