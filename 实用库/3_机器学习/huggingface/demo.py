@@ -2,7 +2,7 @@
   @Author       : liujianhan
   @Date         : 2021/7/19 11:53
   @Project      : DailyTinyImprovement
-  @FileName     : demo.py
+  @FileName     : end_to_end_MLM_with_BERT.py
   @Description  : Placeholder
 """
 from transformers import BertTokenizer, BertModel, pipeline

@@ -29,6 +29,8 @@ if __name__ == '__main__':
     print(HanLP.extractKeyword(document, 2))
     # 自动摘要
     print(HanLP.extractSummary(document, 3))
+    print(HanLP.extractPhrase(document, 3))
+    print(HanLP.extractWords(document, 3))
     # 依存句法分析
     print(HanLP.parseDependency("徐先生还具体帮助他确定了把画雄鹰、松鼠和麻雀作为主攻目标。"))
 
