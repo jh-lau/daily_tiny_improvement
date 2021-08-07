@@ -5,7 +5,7 @@
   @FileName     : end_to_end_MLM_with_BERT.py
   @Description  : Placeholder
 """
-from transformers import BertTokenizer, BertModel, pipeline
+from transformers import BertTokenizer, BertModel, pipeline, TFBertModel
 import os
 os.environ['USE_TF'] = True
 

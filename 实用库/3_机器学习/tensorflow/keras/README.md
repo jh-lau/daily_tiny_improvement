@@ -10,3 +10,5 @@
         - 丧失函数式api方法的一些特性：无法提前检查架构输入输出、架构可被克隆等
 3. build函数用处
     - 将层参数初始化放到build函数中，可以避免需要提前知道各层的参数形状，即懒加载：在层被实例化后，层调用call函数时会自动调用build函数中的权重初始化工作。
+4. 自定义数据类：keras.utils.Sequence用法
+    - [demo](./semantic_similarity_with_BERT.py)
