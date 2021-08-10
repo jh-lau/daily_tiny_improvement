@@ -3,7 +3,7 @@
   @Date         : 2021/6/23 12:21
   @Project      : DailyTinyImprovement
   @FileName     : test.py
-  @Description  : Placeholder
+  @Description  :
 """
 import os
 import io
