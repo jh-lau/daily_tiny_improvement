@@ -8,6 +8,9 @@
 from collections import namedtuple
 
 grade = namedtuple('grade', ('score', 'weight', 'info'))
+scripts = namedtuple('info_level_api', 'exception method task')
+level_s = scripts('hello', 'yes', 'task')
+print(level_s.exception, level_s.method, level_s.task)
 
 
 class Person(
