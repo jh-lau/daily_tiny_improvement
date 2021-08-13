@@ -23,3 +23,6 @@ if __name__ == '__main__':
     pd.get_dummies('data')
     df = df.content.astype('category').a.codes
 
+    # 相同id下只选择某一条
+    df.groupby(['id']).sample(1)
+
