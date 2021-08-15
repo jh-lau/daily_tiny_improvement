@@ -3,7 +3,7 @@
   @Date         : 20/10/3 17:47
   @Project      : DailyTinyImprovement
   @FileName     : demo2_type_and_object.py
-  @Description  : Placeholder
+  @Description  :
 """
 
 
