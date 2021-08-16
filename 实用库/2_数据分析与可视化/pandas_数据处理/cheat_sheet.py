@@ -26,3 +26,6 @@ if __name__ == '__main__':
     # 相同id下只选择某一条
     df.groupby(['id']).sample(1)
 
+    # 列重拍
+    df = df[['a', 'c', 'd', 'b']]
+
