@@ -29,3 +29,6 @@ if __name__ == '__main__':
     # 列重拍
     df = df[['a', 'c', 'd', 'b']]
 
+    # 插入列
+    df.insert(1, 'column_insert', '')
+
