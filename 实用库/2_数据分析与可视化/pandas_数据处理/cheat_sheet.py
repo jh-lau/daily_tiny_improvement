@@ -7,7 +7,8 @@
 """
 import pandas as pd
 
-
+pd.set_option('expand_frame_repr', False)
+pd.set_option('display.max_columns', None)
 if __name__ == '__main__':
     file_path = 'data.csv'
     columns = ['a', 'b', 'c']
@@ -31,4 +32,3 @@ if __name__ == '__main__':
 
     # 插入列
     df.insert(1, 'column_insert', '')
-

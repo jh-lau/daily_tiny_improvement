@@ -7,6 +7,7 @@
 """
 from pyhanlp import *
 CustomDictionary = JClass("com.hankcs.hanlp.dictionary.CustomDictionary")
+NLPTokenizer = JClass("com.hankcs.hanlp.tokenizer.NLPTokenizer")
 # StandardTokenizer = JClass("com.hankcs.hanlp.tokenizer.StandardTokenizer")
 # StandardTokenizer.SEGMENT.enableAllNamedEntityRecognize(True)
 CustomDictionary.add("排卵")  # 动态增加
@@ -30,6 +31,7 @@ if __name__ == '__main__':
     ]
     for sentence in testCases:
         print(HanLP.segment(sentence))
+        print(NLPTokenizer.segment(sentence))
     # 关键词提取
     document = ["水利部水资源司司长陈明忠9月29日在国务院新闻办举行的新闻发布会上透露，" \
                 "根据刚刚完成了水资源管理制度的考核，有部分省接近了红线的指标，" \
@@ -58,7 +60,19 @@ if __name__ == '__main__':
         '那么，大龄女性如何备孕可以提高怀孕几率呢',
         '成年母子过度亲密意味着家庭关系的错位，和母子关系的畸形',
         '提高自己的投档率',
-
+        '身体缺少一些微量元素而导致孩子挑食厌食',
+        '1921这部电影还挺好看的',
+        '花束般恋爱这部电影还挺文艺的',
+        '翁虹因疫情和丈夫女儿分开14个月，小水晶已亭亭玉立颜值高',
     ]
     for s in sentences:
+        print(NLPTokenizer.segment(s))
+        print('关键词提取-Keyword: --> ', HanLP.extractKeyword(s, 2))
+        print('短语提取-Phrase: --> ', HanLP.extractPhrase(s, 6))  # 基本是几类短语组合，可能需要自定义组合
         print(HanLP.parseDependency(s))
+    temp = ''
+    with open('test.txt', encoding='utf8') as src:
+        temp += ''.join([t.strip() for t in src.readlines()])
+    print('新词发现-Words: --> ', HanLP.extractWords(temp, 10))
+    print('新词发现-Words: --> ', HanLP.extractWords(temp, 10, True))
+
