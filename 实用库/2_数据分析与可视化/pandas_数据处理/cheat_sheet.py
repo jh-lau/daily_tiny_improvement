@@ -39,3 +39,7 @@ if __name__ == '__main__':
 
     # 排序
     df.sort_values(['a', 'b'], inplace=True)
+
+    # 对多列进行函数调用
+    f = lambda x: x - 1
+    df['col_3'] = df[['col_1', 'col_2']].apply(lambda x: f(*x), axis=1)
