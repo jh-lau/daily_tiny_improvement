@@ -32,3 +32,10 @@ if __name__ == '__main__':
 
     # 插入列
     df.insert(1, 'column_insert', '')
+
+    # groupby之后保持索引
+    df = df.groupby(['item_id', 'type']).tag_name.agg(lambda x: '-'.join(x))
+    df.reset_index()
+
+    # 排序
+    df.sort_values(['a', 'b'], inplace=True)
