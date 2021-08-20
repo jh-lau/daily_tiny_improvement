@@ -10,9 +10,12 @@ CustomDictionary = JClass("com.hankcs.hanlp.dictionary.CustomDictionary")
 NLPTokenizer = JClass("com.hankcs.hanlp.tokenizer.NLPTokenizer")
 # StandardTokenizer = JClass("com.hankcs.hanlp.tokenizer.StandardTokenizer")
 # StandardTokenizer.SEGMENT.enableAllNamedEntityRecognize(True)
-CustomDictionary.add("排卵")  # 动态增加
+CustomDictionary.add("花束般恋爱")  # 动态增加
 # CustomDictionary.add("排卵监测仪")  # 动态增加
 CustomDictionary.add("美国绿卡")  # 动态增加
+NotionalTokenizer = JClass("com.hankcs.hanlp.tokenizer.NotionalTokenizer")
+StandardTokenizer = JClass("com.hankcs.hanlp.tokenizer.StandardTokenizer")
+StandardTokenizer.SEGMENT.enableAllNamedEntityRecognize(True)
 
 if __name__ == '__main__':
     # print(HanLP.segment('你好，欢迎在Python中调用HanLP的API'))
@@ -64,15 +67,18 @@ if __name__ == '__main__':
         '1921这部电影还挺好看的',
         '花束般恋爱这部电影还挺文艺的',
         '翁虹因疫情和丈夫女儿分开14个月，小水晶已亭亭玉立颜值高',
+        "泽田依子是上外日本文化经济学院的外教",
     ]
     for s in sentences:
         print(NLPTokenizer.segment(s))
+        print(StandardTokenizer.segment(s))
+        print(NotionalTokenizer.segment(s))
         print('关键词提取-Keyword: --> ', HanLP.extractKeyword(s, 2))
         print('短语提取-Phrase: --> ', HanLP.extractPhrase(s, 6))  # 基本是几类短语组合，可能需要自定义组合
         print(HanLP.parseDependency(s))
-    temp = ''
-    with open('test.txt', encoding='utf8') as src:
-        temp += ''.join([t.strip() for t in src.readlines()])
-    print('新词发现-Words: --> ', HanLP.extractWords(temp, 10))
-    print('新词发现-Words: --> ', HanLP.extractWords(temp, 10, True))
+    # temp = ''
+    # with open('test.txt', encoding='utf8') as src:
+    #     temp += ''.join([t.strip() for t in src.readlines()])
+    # print('新词发现-Words: --> ', HanLP.extractWords(temp, 10))
+    # print('新词发现-Words: --> ', HanLP.extractWords(temp, 10, True))
 
