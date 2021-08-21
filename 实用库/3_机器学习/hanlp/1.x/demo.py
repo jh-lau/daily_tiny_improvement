@@ -18,9 +18,6 @@ StandardTokenizer = JClass("com.hankcs.hanlp.tokenizer.StandardTokenizer")
 StandardTokenizer.SEGMENT.enableAllNamedEntityRecognize(True)
 
 if __name__ == '__main__':
-    # print(HanLP.segment('你好，欢迎在Python中调用HanLP的API'))
-    # for term in HanLP.segment('下雨天地面积水'):
-    #     print('{}\t{}'.format(term.word, term.nature))  # 获取单词与词性
     testCases = [
         "商品和服务",
         "结婚的和尚未结婚的确实在干扰分词啊",
