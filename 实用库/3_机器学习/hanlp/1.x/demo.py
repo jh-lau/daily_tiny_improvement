@@ -3,7 +3,7 @@
   @Date         : 21/8/3 19:57
   @Project      : DailyTinyImprovement
   @FileName     : demo.py
-  @Description  : Placeholder
+  @Description  :
 """
 from pyhanlp import *
 CustomDictionary = JClass("com.hankcs.hanlp.dictionary.CustomDictionary")
