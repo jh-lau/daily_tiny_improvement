@@ -64,11 +64,12 @@ if __name__ == '__main__':
         '花束般恋爱这部电影还挺文艺的',
         '翁虹因疫情和丈夫女儿分开14个月，小水晶已亭亭玉立颜值高',
         "泽田依子是上外日本文化经济学院的外教",
+        '九九牙上火，母亲说那就排骨炖海带汤，太烫老九第一次吃得想砸碗	'
     ]
     for s in sentences:
-        print(NLPTokenizer.segment(s))
-        print(StandardTokenizer.segment(s))
-        print(NotionalTokenizer.segment(s))
+        print('nlp tokenizer ', NLPTokenizer.segment(s))
+        print('standard tokenizer ', StandardTokenizer.segment(s))
+        print('notional tokenizer ', NotionalTokenizer.segment(s))
         print('关键词提取-Keyword: --> ', HanLP.extractKeyword(s, 2))
         print('短语提取-Phrase: --> ', HanLP.extractPhrase(s, 6))  # 基本是几类短语组合，可能需要自定义组合
         print(HanLP.parseDependency(s))
