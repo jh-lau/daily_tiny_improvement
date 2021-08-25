@@ -5,6 +5,8 @@
   @FileName     : demo.py
   @Description  :
 """
+import time
+
 from pyhanlp import *
 CustomDictionary = JClass("com.hankcs.hanlp.dictionary.CustomDictionary")
 NLPTokenizer = JClass("com.hankcs.hanlp.tokenizer.NLPTokenizer")
@@ -64,8 +66,11 @@ if __name__ == '__main__':
         '花束般恋爱这部电影还挺文艺的',
         '翁虹因疫情和丈夫女儿分开14个月，小水晶已亭亭玉立颜值高',
         "泽田依子是上外日本文化经济学院的外教",
-        '九九牙上火，母亲说那就排骨炖海带汤，太烫老九第一次吃得想砸碗	'
+        '九九牙上火，母亲说那就排骨炖海带汤，太烫老九第一次吃得想砸碗	',
+        '给大家带来一道我家里吃得最多的美食，也是最近的网红美食——【网红蔬菜蒸包】',
+        '婆婆住我家帮我带娃，夏季用电高峰电费一直我出，很不是滋味'
     ]
+    t1 = time.time()
     for s in sentences:
         print('nlp tokenizer ', NLPTokenizer.segment(s))
         print('standard tokenizer ', StandardTokenizer.segment(s))
@@ -73,6 +78,7 @@ if __name__ == '__main__':
         print('关键词提取-Keyword: --> ', HanLP.extractKeyword(s, 2))
         print('短语提取-Phrase: --> ', HanLP.extractPhrase(s, 6))  # 基本是几类短语组合，可能需要自定义组合
         print(HanLP.parseDependency(s))
+    print(f'{time.time() - t1: .3f}')
     # temp = ''
     # with open('test.txt', encoding='utf8') as src:
     #     temp += ''.join([t.strip() for t in src.readlines()])
