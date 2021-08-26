@@ -77,5 +77,5 @@ if __name__ == '__main__':
     #     # t.pretty_print()
     #     # tmp = r
     #     r.pretty_print()
-    model(sentences, tasks=['con'])
+    # model(sentences, tasks=['con'])
     print(f'{time.time() - t1: .3f}')
