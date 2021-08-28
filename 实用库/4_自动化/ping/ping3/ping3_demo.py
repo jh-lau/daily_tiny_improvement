@@ -3,7 +3,7 @@
   @Date         : 21/2/23 11:58
   @Project      : DailyTinyImprovement
   @FileName     : ping3_demo.py
-  @Description  : Placeholder
+  @Description  :
 """
 from ping3 import ping
 
