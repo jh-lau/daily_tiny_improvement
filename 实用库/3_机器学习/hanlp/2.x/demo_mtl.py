@@ -23,8 +23,6 @@
 import time
 
 import hanlp
-from hanlp.components.mtl.multi_task_learning import MultiTaskLearning
-from hanlp.components.mtl.tasks.tok.tag_tok import TaggingTokenization
 from functools import partial
 
 
