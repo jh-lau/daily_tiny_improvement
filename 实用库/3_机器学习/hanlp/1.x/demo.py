@@ -13,7 +13,7 @@ NLPTokenizer = JClass("com.hankcs.hanlp.tokenizer.NLPTokenizer")
 # StandardTokenizer = JClass("com.hankcs.hanlp.tokenizer.StandardTokenizer")
 # StandardTokenizer.SEGMENT.enableAllNamedEntityRecognize(True)
 CustomDictionary.add("花束般恋爱")  #
-CustomDictionary.add("美国绿卡")  # 动态增加
+CustomDictionary.add("美国绿卡")
 NotionalTokenizer = JClass("com.hankcs.hanlp.tokenizer.NotionalTokenizer")
 StandardTokenizer = JClass("com.hankcs.hanlp.tokenizer.StandardTokenizer")
 StandardTokenizer.SEGMENT.enableAllNamedEntityRecognize(True)
