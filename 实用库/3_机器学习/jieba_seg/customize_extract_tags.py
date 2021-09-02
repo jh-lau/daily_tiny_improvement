@@ -6,7 +6,6 @@
   @Description  : Placeholder
 """
 from functools import partial
-from operator import itemgetter
 from typing import List, Set
 
 from jieba.analyse.tfidf import TFIDF
