@@ -3,7 +3,7 @@
   @Date         : 2021/9/1 15:34
   @Project      : DailyTinyImprovement
   @FileName     : customize_extract_tags.py
-  @Description  : Placeholder
+  @Description  :
 """
 from functools import partial
 from typing import List, Set
