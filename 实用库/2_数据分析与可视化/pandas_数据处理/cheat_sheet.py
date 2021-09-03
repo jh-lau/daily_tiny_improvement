@@ -43,3 +43,7 @@ if __name__ == '__main__':
     # 对多列进行函数调用
     f = lambda x: x - 1
     df['col_3'] = df[['col_1', 'col_2']].apply(lambda x: f(*x), axis=1)
+
+    # from_dict
+    test = {'a': [1,2, 3], 'b': [3,4, 5]}
+    df = pd.DataFrame.from_dict(test, orient='index', columns=['id', 'title', 'content'])
