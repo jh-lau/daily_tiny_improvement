@@ -15,5 +15,6 @@ if __name__ == '__main__':
     }
     r = requests.get(url, headers=header, verify=False)
     soup = BeautifulSoup(r.text, 'html.parser')
-    target = [t['src'] for t in soup.find_all('img') if t.attrs.get('title') == '点击看大图']
+    target = [t['src'] for t in soup.find_all('img') if t.attrs.get('title') == '点击看大图']  # for book
+    # target = [t['src'] for t in soup.find_all('img') if t.attrs.get('title') == '点击看更多海报']  # for movie
     pass
