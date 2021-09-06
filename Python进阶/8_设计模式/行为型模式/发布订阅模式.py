@@ -3,7 +3,7 @@
   @Date         : 21/1/1 19:01
   @Project      : DailyTinyImprovement
   @FileName     : 发布订阅模式.py
-  @Description  : Placeholder
+  @Description  : 或者叫：监听模式
 """
 
 
