@@ -19,6 +19,7 @@ def get_cover_pic(url):
     }
     print(f'current url: {url}')
     r = requests.get(url, headers=header, verify=True)
+    print(r.status_code, r.text)
     soup = BeautifulSoup(r.text, 'html.parser')
     target = [t['src'] for t in soup.find_all('img') if t.attrs.get('title') == '点击看更多海报']  # for movie
     return f"{url},{target}" if target else f"{url},"
