@@ -3,7 +3,7 @@
   @Date         : 21/9/5 15:27
   @Project      : DailyTinyImprovement
   @FileName     : douban_book.py
-  @Description  : Placeholder
+  @Description  : 获取豆瓣书籍封面
 """
 import re
 
