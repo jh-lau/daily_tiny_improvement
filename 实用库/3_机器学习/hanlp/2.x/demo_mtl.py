@@ -13,7 +13,7 @@
   pos: 词性标注 - https://hanlp.hankcs.com/docs/annotations/pos/ctb.html
   lem：词干提取
   fea：词法语法特征
-  ner: 实体识别
+  ner: 实体识别 - https://hanlp.hankcs.com/docs/annotations/ner/msra.html
   dep: 依存句法分析 - https://hanlp.hankcs.com/docs/annotations/dep/sd_zh.html
   con: 短语成分分析 - https://hanlp.hankcs.com/docs/annotations/constituency/ctb.html
   srl: 语义角色标注 - https://hanlp.hankcs.com/docs/annotations/srl/cpb.html
