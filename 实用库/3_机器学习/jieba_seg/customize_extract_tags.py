@@ -56,4 +56,4 @@ if __name__ == '__main__':
     sorter = partial(CustomizeTFIDF().sort_tok_by_tfidf, stopwords=stopwords)
     print(sorter(test_list))
     print(sorter(test_list[::-1], topK=3))
-    print(sorter(test_list, topK=3))
+    print(sorter(test_list, topK=6))
