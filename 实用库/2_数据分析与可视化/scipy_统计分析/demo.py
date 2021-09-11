@@ -5,3 +5,6 @@
   @FileName     : demo.py
   @Description  : Placeholder
 """
+
+if __name__ == '__main__':
+    pass
