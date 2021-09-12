@@ -3,7 +3,7 @@
   @Date         : 21/7/29 22:01
   @Project      : DailyTinyImprovement
   @FileName     : cheat_sheet.py
-  @Description  : Placeholder
+  @Description  :
 """
 import pandas as pd
 
