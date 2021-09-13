@@ -3,7 +3,7 @@
   @Date         : 2021/7/21 11:25
   @Project      : DailyTinyImprovement
   @FileName     : progress_bar.py
-  @Description  : Placeholder
+  @Description  :
 """
 import pandas as pd
 import numpy as np
