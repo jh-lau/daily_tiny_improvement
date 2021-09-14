@@ -3,7 +3,7 @@
   @Date         : 2020/11/27 13:40
   @Project      : DailyTinyImprovement
   @FileName     : roc_auc.py
-  @Description  : Placeholder
+  @Description  :
 """
 from sklearn.metrics import roc_curve, auc
 
