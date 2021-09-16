@@ -3,7 +3,7 @@
   @Date         : 2021/6/23 16:40
   @Project      : DailyTinyImprovement
   @FileName     : iter_large_file.py
-  @Description  : Placeholder
+  @Description  :
 """
 import mmap
 import time
