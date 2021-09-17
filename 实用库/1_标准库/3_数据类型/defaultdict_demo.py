@@ -3,7 +3,7 @@
   @Date         : 20/8/10 22:23
   @FileName     : defaultdict_demo.py
   @ProjectName  : DailyTinyImprovement
-  @Description  : Placeholder
+  @Description  :
  """
 from collections import defaultdict
 
