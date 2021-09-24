@@ -3,7 +3,7 @@
   @Date         : 2021/7/19 11:53
   @Project      : DailyTinyImprovement
   @FileName     : end_to_end_MLM_with_BERT.py
-  @Description  : Placeholder
+  @Description  :
 """
 from transformers import BertTokenizer, BertModel, pipeline, TFBertModel
 import os
