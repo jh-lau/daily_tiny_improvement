@@ -3,7 +3,7 @@
   @Date         : 2020/7/29 下午1:55
   @Project      : DailyTinyImprovement
   @FileName     : for what.py
-  @Description  : Placeholder
+  @Description  :
 """
 some_string = 'hello world'
 some_string_dic = {}
