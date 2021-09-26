@@ -3,7 +3,7 @@
   @Date         : 2020/10/29 11:14
   @Project      : DailyTinyImprovement
   @FileName     : 是否可哈希.py
-  @Description  : Placeholder
+  @Description  :
 """
 from typing import Any
 
