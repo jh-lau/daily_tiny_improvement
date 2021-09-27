@@ -3,7 +3,7 @@
   @Date         : 2020/1/9 下午3:20
   @Project      : DailyTinyImprovement
   @FileName     : demo_pos.py
-  @Description  : Placeholder
+  @Description  :
 """
 import hanlp
 from hanlp.pretrained.pos import CTB5_POS_RNN_FASTTEXT_ZH
