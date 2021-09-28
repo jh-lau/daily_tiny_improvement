@@ -3,7 +3,7 @@
   @Date         : 2021/6/24 8:58
   @Project      : DailyTinyImprovement
   @FileName     : read_large_file.py
-  @Description  : Placeholder
+  @Description  :
 """
 import pandas as pd
 import matplotlib.pyplot as plt
