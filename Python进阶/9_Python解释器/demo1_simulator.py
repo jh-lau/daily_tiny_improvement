@@ -3,7 +3,7 @@
   @Date         : 20/9/30 23:43
   @Project      : DailyTinyImprovement
   @FileName     : demo1_simulator.py
-  @Description  : Placeholder
+  @Description  :
 """
 from typing import Tuple, Dict, List
 
