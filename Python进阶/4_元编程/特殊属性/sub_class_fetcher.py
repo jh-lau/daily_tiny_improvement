@@ -12,7 +12,7 @@ class A:
     def all_subclasses(cls):
         for s in cls.__subclasses__():
             yield s
-            for c in s.all_subclasses():
+            for c in s.all_subclasses():  # 只要是该类子类，则必然继承该方法
                 yield c
 
     @classmethod
