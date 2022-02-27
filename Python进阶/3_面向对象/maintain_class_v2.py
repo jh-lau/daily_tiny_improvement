@@ -5,7 +5,7 @@
   @FileName     : maintain_class.py
   @Description  : 尽量用辅助类维护程序状态，而不是用字典和元组
 """
-from collections import defaultdict, namedtuple
+from collections import namedtuple
 
 Grade = namedtuple("Grade", ('score', 'weight'))
 

@@ -33,4 +33,5 @@ def say(something):
 
 
 if __name__ == '__main__':
-    say('hello world')
+    say('hello world')  # == LoggerNew(level='WARNING')(say)('hello world')
+    # LoggerNew(level='WARNING')(say)('hello world')

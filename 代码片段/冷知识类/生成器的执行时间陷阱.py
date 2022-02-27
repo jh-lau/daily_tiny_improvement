@@ -19,11 +19,10 @@ list2 = [1, 2, 3, 4]
 g1 = (x for x in list2)
 # to a new list
 list2 = [2, 3, 4, 5]
+print(list(g1))
 
 list3 = [2, 3, 4, 5]
 g2 = (x for x in list3)
 # inplace update
 list3[:] = [2, 3, 4, 5, 6]
-
-print(list(g1))
 print(list(g2))
