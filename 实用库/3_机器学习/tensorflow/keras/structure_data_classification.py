@@ -7,8 +7,8 @@
 """
 import pandas as pd
 import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import layers
+from tensorflow.python import keras
+from tensorflow.python.keras import layers
 from tensorflow.keras.layers.experimental.preprocessing import IntegerLookup, Normalization, StringLookup
 
 

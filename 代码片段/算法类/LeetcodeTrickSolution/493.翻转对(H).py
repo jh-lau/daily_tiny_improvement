@@ -63,3 +63,8 @@ if __name__ == '__main__':
     for tc in test_cases:
         print(Solution.reverse_pairs(tc))
         print(Solution.reverse_pairs_v2(tc))
+
+from official.nlp.bert import *
+import tensorflow_hub as hub
+
+hub.KerasLayer
